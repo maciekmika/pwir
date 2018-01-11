@@ -12,5 +12,6 @@ b) hamulec jest uruchomiony
 -- Ko³o gwa³townie przesta³o siê krêciæ – poœlizg
 -- Ko³o zaczyna krêciæ siê wolniej, ni¿ pozosta³e ko³a. Ko³o takie rozpoczyna poœlizg i za chwilê zatrzyma siê. (ABS musi tu uwzglêdniaæ fakt, ¿e ró¿nica prêdkoœci na zakrêcie jest zjawiskiem normalnym.)
 
-- 
 
+Symulowanie powierzchni:
+http://www.ni.com/white-paper/13015/en/
