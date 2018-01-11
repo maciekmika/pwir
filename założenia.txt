@@ -22,3 +22,4 @@ zmienne:
 - sila hamowanie
 - predkosc poczotkowa
 - 
+http://hyperphysics.phy-astr.gsu.edu/hbase/Mechanics/frictire.html
