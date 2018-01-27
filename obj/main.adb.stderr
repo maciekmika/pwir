@@ -1,0 +1,1 @@
+main.adb:29:04: warning: variable "MessageAvailable" is never read and never assigned

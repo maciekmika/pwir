@@ -1,0 +1,196 @@
+V "GNAT Lib v2017"
+M P W=b
+A -gnatA
+A -mtune=generic
+A -march=pentium4
+P ZX
+
+RN
+RV NO_CALENDAR
+RV NO_DELAY
+RV NO_EXCEPTION_HANDLERS
+RV NO_EXCEPTIONS
+RV NO_FIXED_POINT
+RV NO_FLOATING_POINT
+RV NO_IO
+RV NO_IMPLICIT_CONDITIONALS
+RV NO_RELATIVE_DELAY
+RV NO_STANDARD_STORAGE_POOLS
+RV NO_TASK_HIERARCHY
+RV NO_TASKING
+RV NO_DEFAULT_INITIALIZATION
+RV NO_IMPLEMENTATION_PRAGMAS
+RV SPARK_05
+RV MAX_TASK_ENTRIES=1
+RV MAX_TASKS=1+
+
+U main%b		main.adb		e2a146d7 NE OO SU
+W ada%s			ada.ads			ada.ali
+W ada.calendar%s	a-calend.adb		a-calend.ali
+W ada.calendar.delays%s	a-caldel.adb		a-caldel.ali
+W ada.float_text_io%s	a-flteio.ads		a-flteio.ali
+W ada.integer_text_io%s	a-inteio.ads		a-inteio.ali
+W ada.real_time%s	a-reatim.adb		a-reatim.ali
+W ada.tags%s		a-tags.adb		a-tags.ali
+W ada.text_io%s		a-textio.adb		a-textio.ali
+W brake%s		brake.adb		brake.ali
+W brakecontroller%s	brakecontroller.adb	brakecontroller.ali
+W canbus%s		canbus.adb		canbus.ali
+W clocktick%s		clocktick.ads		clocktick.ali
+W measures%s		measures.adb		measures.ali
+W speedsensor%s		speedsensor.adb		speedsensor.ali
+W system%s		system.ads		system.ali
+W system.parameters%s	s-parame.adb		s-parame.ali
+W system.soft_links%s	s-soflin.adb		s-soflin.ali
+W system.task_info%s	s-tasinf.adb		s-tasinf.ali
+W system.tasking%s	s-taskin.adb		s-taskin.ali
+W system.tasking.rendezvous%s  s-tasren.adb	s-tasren.ali
+W system.tasking.stages%s  s-tassta.adb		s-tassta.ali
+W wheel%s		wheel.adb		wheel.ali
+
+D ada.ads		20170516105950 76789da1 ada%s
+D a-calend.ads		20170516105954 2d5f01d4 ada.calendar%s
+D a-caldel.ads		20170516105948 9f20b83d ada.calendar.delays%s
+D a-except.ads		20170516105952 291912d5 ada.exceptions%s
+D a-finali.ads		20170516105954 bf4f806b ada.finalization%s
+D a-flteio.ads		20170516105952 e18a47a0 ada.float_text_io%s
+D a-inteio.ads		20170516105954 f64b89a4 ada.integer_text_io%s
+D a-ioexce.ads		20170516105948 e4a01f64 ada.io_exceptions%s
+D a-reatim.ads		20170516105950 a87e2da7 ada.real_time%s
+D a-stream.ads		20170516105952 119b8fb3 ada.streams%s
+D a-tags.ads		20170516105954 d3a89129 ada.tags%s
+D a-textio.ads		20170516105954 386df5d4 ada.text_io%s
+D a-tiflio.ads		20170516105948 56fbda09 ada.text_io.float_io%s
+D a-tiinio.ads		20170516105950 aa04e5d6 ada.text_io.integer_io%s
+D a-unccon.ads		20170516105954 31484697 ada.unchecked_conversion%s
+D brake.ads		20171221051936 951b3241 brake%s
+D brakecontroller.ads	20180127213348 c24429cf brakecontroller%s
+D canbus.ads		20171221051936 1892383b canbus%s
+D clocktick.ads		20171221051936 70d6025f clocktick%s
+D interfac.ads		20170516105950 5ab55268 interfaces%s
+D i-c.ads		20170516105948 5421119b interfaces.c%s
+D i-cstrin.ads		20170516105952 341d0ddf interfaces.c.strings%s
+D i-cstrea.ads		20170516105950 e53d8b8e interfaces.c_streams%s
+D main.adb		20180127214420 dcb52a9d main%b
+D measures.ads		20171221051936 c7781018 measures%s
+D speedsensor.ads	20171221051936 4db9d805 speedsensor%s
+D system.ads		20170516105954 32a08138 system%s
+D s-atacco.ads		20170516105954 4c36d12f system.address_to_access_conversions%s
+D s-crtl.ads		20170516105948 0ebbdb71 system.crtl%s
+D s-exctab.ads		20170516105954 54135002 system.exception_table%s
+D s-ficobl.ads		20170516105956 078245e4 system.file_control_block%s
+D s-finroo.ads		20170516105954 4ff27390 system.finalization_root%s
+D s-multip.ads		20170516105948 38ac9f73 system.multiprocessors%s
+D s-osinte.ads		20170516105954 2e5b26a9 system.os_interface%s
+D s-parame.ads		20170516105954 7e2a0d7f system.parameters%s
+D s-soflin.ads		20170516105950 14e1eb6c system.soft_links%s
+D s-stache.ads		20170516105954 a37c21ec system.stack_checking%s
+D s-stausa.ads		20170516105954 017a0a05 system.stack_usage%s
+D s-stalib.ads		20170516105954 09bd3940 system.standard_library%s
+D s-stoele.ads		20170516105956 2dc34a04 system.storage_elements%s
+D s-tasinf.ads		20170516105952 601f6b72 system.task_info%s
+D s-taspri.ads		20170516105952 6c1d93d4 system.task_primitives%s
+D s-taprop.ads		20170516105950 1dd2e1b6 system.task_primitives.operations%s
+D s-taskin.ads		20170516105956 05d6152c system.tasking%s
+D s-taprob.ads		20170516105950 acd6094d system.tasking.protected_objects%s
+D s-tpoben.ads		20170516105956 60ad3dae system.tasking.protected_objects.entries%s
+D s-tasren.ads		20170516105950 a67a9949 system.tasking.rendezvous%s
+D s-tassta.ads		20170516105952 5a53a7c6 system.tasking.stages%s
+D s-traent.ads		20170516105950 005bf670 system.traceback_entries%s
+D s-unstyp.ads		20170516105952 34867c83 system.unsigned_types%s
+D s-wchcon.ads		20170516105954 1b7d22d2 system.wch_con%s
+D s-win32.ads		20170516105948 b7f96285 system.win32%s
+D wheel.ads		20171221051936 893dbfb9 wheel%s
+X 1 ada.ads
+16K9*Ada 20e8 24|8r6 8r29 9r6 9r31 10r6 10r23 11r6 11r25 53r14 56r15 67r14
+. 70r15 93r11 96r15 108r14 111r15
+X 2 a-calend.ads
+36K13*Calendar 395e17 24|11w10 11r29 53r18 56r19 67r18 70r19 93r15 96r19
+. 108r18 111r19
+44I9*Time<213I9> 24|53r27 67r27 93r24 108r27
+58V13*Clock{44I9} 24|56s28 70s28 96s28 111s28
+102V14*"+"{44I9} 24|61s23 77s23 102s23 118s23
+213I9 Time_Rep<long_long_integer>
+X 6 a-flteio.ads
+20K13*Float_Text_IO[13|46] 24|8w10 8r33
+X 7 a-inteio.ads
+18K13*Integer_Text_IO[14|46] 24|9w10 9r35
+X 12 a-textio.ads
+49K13*Text_IO 471e16 24|10w10 10r27
+166U14*New_Line 24|99s32 101s63
+242U14*Put 24|101s10
+X 13 a-tiflio.ads
+68U14*Put 24|101s38[6|20]
+X 16 brake.ads
+5K9*Brake 29e10 24|3w6 16r9 85r10 86r10
+8R9*Brake 28e14 24|16r15
+14U14*SetPressure 24|85s16
+20U14*Tick 24|86s16
+X 17 brakecontroller.ads
+11K9*BrakeController 97e21 24|6w6 6r27 19r9 112r7 113r7 114r7 117r10
+15R9*BrakeControllerType 48e14 24|19r25
+51U14*Init 24|112s23
+52U14*turnOn 24|113s23
+54U14*Tick 24|114s23 117s26
+X 18 canbus.ads
+5K9*CANBus 98e11 24|7w6 7r18 18r10 27r21
+8R9*CANBus 96e14 24|18r17
+45R9*CANBusMessage 70e14 24|27r28
+X 19 clocktick.ads
+2K9*ClockTick 7e14 24|1w6 42r52
+5i4*TicksPerSecond{integer} 24|42r62
+X 24 main.adb
+13U11*Main 13b11 132l5 132t9
+15r4 Wh{53|7R9} 57m18 60m21 60r21 72r27 75r30 86m24 86r24 99r27 114m32 114r32
+. 117m35 117r35
+16r4 Br{16|8R9} 85m28 85r28 86r21 114m36 114r36 117m39 117r39
+17r4 SS{26|9R9} 71m24 72m24 72r24 75m27 75r27 76r46 114m45 114r45 117m48
+. 117r48
+18r4 Bus{18|8R9} 114m40 114r40 117m43 117r43
+19r4 BC{17|15R9} 112m28 112r28 113m30 114m28 114r28 117m31 117r31
+22i4 TickCount{natural}
+24f4 MeasuredVel{25|11F9} 76m10 101r48
+27r4 CurrentMessage{18|45R9}
+29b4 MessageAvailable{boolean}
+33f4 INITIAL_BRAKE_PRESSURE{25|37F9}
+38f4 ZERO_BRAKE_PRESSURE{25|37F9}
+42i4 NUM_TICKS_TO_RUN_FOR{natural}
+44T14 Writing 92b14 105l8 105t15
+45T14 SpinningWheel 52b14 63l8 63t21 123r16
+46T14 SpeedSensorLive 66b14 79l8 79t23 124r13
+47T14 BrakeEvent 49l8 49e18 81b14 90l8 90t18 125r16
+48Y13 Braking 84b14 88l11 88t18 131s14
+50T14 BrakeControllerLive 107b14 120l8 120t27 127r26
+53i7 Next{2|44I9} 56m7 59r22 61m10 61r18
+54o7 Period{duration} 61r25
+67i7 Next{2|44I9} 70m7 74r22 77m10 77r18
+68o7 Period{duration} 77r25
+93i4 Next{2|44I9} 96m7 98r22 102m10 102r18
+94o7 Period{duration} 102r25
+108i7 Next{2|44I9} 111m7 116r22 118m10 118r18
+109o7 Period{duration} 118r25
+123t4 NiceWheel{45T14}
+124t4 NiceSS{46T14}
+125t4 NiceBrake{47T14} 131r4
+127t4 NiceBrakeController{50T14}
+X 25 measures.ads
+3K9*Measures 24|4w6 24r18 24r35 33r38 34r6 38r35 39r6 39r29 85r31 25|60e13
+11F9*KMPH<short_float> 24|24r27 24r44
+31f4*MIN_BRAKE_PRESSURE{float} 24|39r38
+37F9*BrakePressure<short_float> 24|33r47 34r15 38r44 39r15 85r40
+X 26 speedsensor.ads
+6K9*SpeedSensor 24|5w6 17r9 71r7 72r7 75r10 76r25 26|28e16
+9R9*SpeedSensor 24|17r21 26|26e14
+13U14*Init 24|71s19
+16U14*Tick 24|72s19 75s22
+20V13*GetSpeed{25|11F9} 24|76s37
+X 38 s-stausa.ads
+203U14*Initialize 204i<c,__gnat_stack_usage_initialize>22
+268U14*Output_Results 272i<c,__gnat_stack_usage_output_results>22
+X 53 wheel.ads
+4K9*Wheel 24|2w6 15r9 57r7 60r10 99r10 53|43e10
+7R9*Wheel 24|15r15 53|41e14
+11U14*Init 24|57s13
+25U14*Tick 24|60s16
+28U14*DebugPrint 24|99s16
+

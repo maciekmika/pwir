@@ -1,0 +1,30 @@
+[GENERATED OBJECT FILE]
+b__main.o
+[PROJECT FILES]
+C:\Users\Admin\Documents\Studia\5 semestr\pwir\projekt\1\default.gpr
+20180126184754
+[BOUND OBJECT FILES]
+C:\Users\Admin\Documents\Studia\5 semestr\pwir\projekt\1\obj\clocktick.o
+C:\Users\Admin\Documents\Studia\5 semestr\pwir\projekt\1\obj\measures.o
+C:\Users\Admin\Documents\Studia\5 semestr\pwir\projekt\1\obj\randomnumber.o
+C:\Users\Admin\Documents\Studia\5 semestr\pwir\projekt\1\obj\canbus.o
+C:\Users\Admin\Documents\Studia\5 semestr\pwir\projekt\1\obj\wheel.o
+C:\Users\Admin\Documents\Studia\5 semestr\pwir\projekt\1\obj\brake.o
+C:\Users\Admin\Documents\Studia\5 semestr\pwir\projekt\1\obj\speedsensor.o
+C:\Users\Admin\Documents\Studia\5 semestr\pwir\projekt\1\obj\brakecontroller.o
+C:\Users\Admin\Documents\Studia\5 semestr\pwir\projekt\1\obj\main.o
+[GENERATED SOURCE FILES]
+b__main.ads
+b__main.adb
+b__main.ali
+[RESULTING OPTIONS]
+-LC:\Users\Admin\Documents\Studia\5 semestr\pwir\projekt\1\obj\
+-LC:\Users\Admin\Documents\Studia\5 semestr\pwir\projekt\1\obj\
+-LC:/gnat/2017/lib/gcc/i686-pc-mingw32/6.3.1/adalib/
+-static
+-static-libgcc
+C:/gnat/2017/lib/gcc/i686-pc-mingw32/6.3.1/adalib/libgnarl.a
+C:/gnat/2017/lib/gcc/i686-pc-mingw32/6.3.1/adalib/libgnat.a
+-Xlinker
+--stack=0x200000,0x1000
+-mthreads

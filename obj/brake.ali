@@ -1,0 +1,102 @@
+V "GNAT Lib v2017"
+A -gnatA
+A -mtune=generic
+A -march=pentium4
+P ZX
+
+RN
+RV NO_FLOATING_POINT
+RV NO_IO
+RV NO_IMPLEMENTATION_PRAGMAS
+
+U brake%b		brake.adb		41c0832d NE OO PK
+W ada%s			ada.ads			ada.ali
+W ada.float_text_io%s	a-flteio.ads		a-flteio.ali
+W ada.text_io%s		a-textio.adb		a-textio.ali
+W measures%s		measures.adb		measures.ali
+W randomnumber%s	randomnumber.adb	randomnumber.ali
+W wheel%s		wheel.adb		wheel.ali
+
+U brake%s		brake.ads		db5e9de0 EE NE OO PK
+W measures%s		measures.adb		measures.ali
+W wheel%s		wheel.adb		wheel.ali
+
+D ada.ads		20170516105950 76789da1 ada%s
+D a-except.ads		20170516105952 291912d5 ada.exceptions%s
+D a-flteio.ads		20170516105952 e18a47a0 ada.float_text_io%s
+D a-ioexce.ads		20170516105948 e4a01f64 ada.io_exceptions%s
+D a-numeri.ads		20170516105950 bb51c45a ada.numerics%s
+D a-nuflra.ads		20170516105950 4056ab7a ada.numerics.float_random%s
+D a-stream.ads		20170516105952 119b8fb3 ada.streams%s
+D a-tags.ads		20170516105954 d3a89129 ada.tags%s
+D a-textio.ads		20170516105954 386df5d4 ada.text_io%s
+D a-tiflio.ads		20170516105948 56fbda09 ada.text_io.float_io%s
+D a-unccon.ads		20170516105954 31484697 ada.unchecked_conversion%s
+D brake.ads		20171221051936 951b3241 brake%s
+D brake.adb		20171221051936 fbe7a933 brake%b
+D interfac.ads		20170516105950 5ab55268 interfaces%s
+D i-cstrea.ads		20170516105950 e53d8b8e interfaces.c_streams%s
+D measures.ads		20171221051936 c7781018 measures%s
+D randomnumber.ads	20171221051936 b89e058a randomnumber%s
+D system.ads		20170516105954 32a08138 system%s
+D s-crtl.ads		20170516105948 0ebbdb71 system.crtl%s
+D s-exctab.ads		20170516105954 54135002 system.exception_table%s
+D s-ficobl.ads		20170516105956 078245e4 system.file_control_block%s
+D s-parame.ads		20170516105954 7e2a0d7f system.parameters%s
+D s-rannum.ads		20170516105952 99ade2f2 system.random_numbers%s
+D s-soflin.ads		20170516105950 14e1eb6c system.soft_links%s
+D s-stache.ads		20170516105954 a37c21ec system.stack_checking%s
+D s-stalib.ads		20170516105954 09bd3940 system.standard_library%s
+D s-stoele.ads		20170516105956 2dc34a04 system.storage_elements%s
+D s-traent.ads		20170516105950 005bf670 system.traceback_entries%s
+D s-unstyp.ads		20170516105952 34867c83 system.unsigned_types%s
+D s-wchcon.ads		20170516105954 1b7d22d2 system.wch_con%s
+D wheel.ads		20171221051936 893dbfb9 wheel%s
+X 1 ada.ads
+16K9*Ada 20e8 13|5r6 6r6 48r7 49r7 50r7 51r7 52r7
+X 3 a-flteio.ads
+20K13*Float_Text_IO[10|46] 13|6w10 51r11
+X 9 a-textio.ads
+49K13*Text_IO 471e16 13|5w10 48r11 49r11 50r11 52r11
+166U14*New_Line 13|49s19 52s19
+242U14*Put 13|48s19 50s19
+X 10 a-tiflio.ads
+68U14*Put 13|51s25[3|20]
+X 12 brake.ads
+5K9*Brake 26E9 29l5 29e10 13|8b14 55l5 55t10
+8R9*Brake 11r28 14r38 17r33 20r27 23r33 26c9 28e14 13|13r28 18r38 23r33 28r27
+. 46r33
+11U14*Init 11<19 13|13b14 16t7
+11r19 Br{8R9} 13|13b19 15m7
+14U14*SetPressure 14=26 14>45 13|18b14 21t7
+14r26 Br{8R9} 13|18b26 20m7
+14f45 Pr{16|37F9} 13|18b45 20r22
+17V13*GetPressure{16|37F9} 17>25 13|23b13 26l8 26t19
+17r25 Br{8R9} 13|23b25 25r14
+20U14*Tick 20>19 20=34 13|28b14 44t7
+20r19 Br{8R9} 13|28b19 30r42 31r42 39r16
+20r34 Wh{31|7R9} 13|28b34 40m25 42m25
+23U14*DebugPrint 23>25 13|46b14 53l8 53t18
+23r25 Br{8R9} 13|46b25 51r35
+27f7*Pressure{16|37F9} 13|15m10 20m10 25r17 30r45 31r45 39r19 51r38
+X 13 brake.adb
+11f4 Error{float} 36r63
+30f7 Pressure{float}
+31f7 NewAccel{float} 35r63
+34f7 NewMPS2{16|23F9} 42r29
+X 16 measures.ads
+3K9*Measures 12|1w6 14r53 17r47 27r18 13|1w6 15r22 15r45 18r53 23r47 31r63
+. 34r26 35r9 40r29 16|60e13
+23F9*MPS2<long_float> 13|34r35 40r38
+28f4*MAX_PRESSURE_MPS2{23F9} 13|31r72
+31f4*MIN_BRAKE_PRESSURE{float} 13|15r54
+37F9*BrakePressure<short_float> 12|14r62 17r56 27r27 13|15r31 18r62 23r56
+52V13*LimitMPS2{23F9} 13|35s18
+X 17 randomnumber.ads
+4K9*RandomNumber 13|3w6 35r28 17|44e17
+28V13*UniformFloatWithError{float} 13|35s41
+X 31 wheel.ads
+4K9*Wheel 12|2w6 20r46 13|2w6 28r46 40r10 42r10 31|43e10
+7R9*Wheel 12|20r52 13|28r52 31|41e14
+14U14*SetAccel 13|40s16 42s16
+

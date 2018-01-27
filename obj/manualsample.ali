@@ -1,0 +1,123 @@
+V "GNAT Lib v2017"
+M P W=b
+A -gnatA
+A -mtune=generic
+A -march=pentium4
+P ZX
+
+RN
+RV NO_FLOATING_POINT
+RV NO_IO
+RV NO_IMPLICIT_CONDITIONALS
+RV NO_DEFAULT_INITIALIZATION
+RV NO_IMPLEMENTATION_PRAGMAS
+RV SPARK_05
+
+U manualsample%b	manualsample.adb	e69f2dc2 NE OO SU
+W ada%s			ada.ads			ada.ali
+W ada.float_text_io%s	a-flteio.ads		a-flteio.ali
+W ada.integer_text_io%s	a-inteio.ads		a-inteio.ali
+W ada.text_io%s		a-textio.adb		a-textio.ali
+W brake%s		brake.adb		brake.ali
+W canbus%s		canbus.adb		canbus.ali
+W clocktick%s		clocktick.ads		clocktick.ali
+W measures%s		measures.adb		measures.ali
+W speedsensor%s		speedsensor.adb		speedsensor.ali
+W wheel%s		wheel.adb		wheel.ali
+
+D ada.ads		20170516105950 76789da1 ada%s
+D a-except.ads		20170516105952 291912d5 ada.exceptions%s
+D a-flteio.ads		20170516105952 e18a47a0 ada.float_text_io%s
+D a-inteio.ads		20170516105954 f64b89a4 ada.integer_text_io%s
+D a-ioexce.ads		20170516105948 e4a01f64 ada.io_exceptions%s
+D a-stream.ads		20170516105952 119b8fb3 ada.streams%s
+D a-tags.ads		20170516105954 d3a89129 ada.tags%s
+D a-textio.ads		20170516105954 386df5d4 ada.text_io%s
+D a-tiflio.ads		20170516105948 56fbda09 ada.text_io.float_io%s
+D a-tiinio.ads		20170516105950 aa04e5d6 ada.text_io.integer_io%s
+D a-unccon.ads		20170516105954 31484697 ada.unchecked_conversion%s
+D brake.ads		20171221051936 951b3241 brake%s
+D canbus.ads		20171221051936 1892383b canbus%s
+D clocktick.ads		20171221051936 70d6025f clocktick%s
+D interfac.ads		20170516105950 5ab55268 interfaces%s
+D i-cstrea.ads		20170516105950 e53d8b8e interfaces.c_streams%s
+D manualsample.adb	20171221051936 37906993 manualsample%b
+D measures.ads		20171221051936 c7781018 measures%s
+D speedsensor.ads	20171221051936 4db9d805 speedsensor%s
+D system.ads		20170516105954 32a08138 system%s
+D s-crtl.ads		20170516105948 0ebbdb71 system.crtl%s
+D s-exctab.ads		20170516105954 54135002 system.exception_table%s
+D s-ficobl.ads		20170516105956 078245e4 system.file_control_block%s
+D s-parame.ads		20170516105954 7e2a0d7f system.parameters%s
+D s-soflin.ads		20170516105950 14e1eb6c system.soft_links%s
+D s-stache.ads		20170516105954 a37c21ec system.stack_checking%s
+D s-stalib.ads		20170516105954 09bd3940 system.standard_library%s
+D s-stoele.ads		20170516105956 2dc34a04 system.storage_elements%s
+D s-traent.ads		20170516105950 005bf670 system.traceback_entries%s
+D s-unstyp.ads		20170516105952 34867c83 system.unsigned_types%s
+D s-wchcon.ads		20170516105954 1b7d22d2 system.wch_con%s
+D wheel.ads		20171221051936 893dbfb9 wheel%s
+X 1 ada.ads
+16K9*Ada 20e8 17|7r6 7r29 8r6 8r31 9r6 9r23
+X 3 a-flteio.ads
+20K13*Float_Text_IO[9|46] 17|7w10 7r33
+X 4 a-inteio.ads
+18K13*Integer_Text_IO[10|46] 17|8w10 8r35
+X 8 a-textio.ads
+49K13*Text_IO 471e16 17|9w10 9r27
+166U14*New_Line 17|70s36 76s13 84s32 86s34 98s60 104s4
+242U14*Put 17|70s10 74s13 84s10 86s10 98s7 102s4
+X 9 a-tiflio.ads
+68U14*Put 17|75s13[3|20] 98s35[3|20] 103s4[3|20]
+X 12 brake.ads
+5K9*Brake 29e10 17|3w6 18r9 48r4 57r4 64r7 78r13 87r10 92r7
+8R9*Brake 28e14 17|18r15
+11U14*Init 17|48s10
+14U14*SetPressure 17|57s10 78s19 87s16
+20U14*Tick 17|92s13
+23U14*DebugPrint 17|64s13
+X 13 canbus.ads
+5K9*CANBus 98e11 17|6w6 6r18 22r10 29r21 50r4 68r7 71r10 73r42 91r7
+8R9*CANBus 96e14 17|22r17
+11U14*Init 17|50s11
+16n31*BrakePressureUpdate{16E9} 17|73r49
+45R9*CANBusMessage 70e14 17|29r28
+45e23*MessageType{16E9} 17|73r28
+48f13*Pressure{18|37F9} 17|75r38 78r49
+75U14*GetNewMessage 17|68s14
+84U14*DebugPrintMessage 17|71s17
+87U14*Tick 17|91s14
+X 14 clocktick.ads
+2K9*ClockTick 7e14 17|1w6 44r52 83r24 103r33
+5i4*TicksPerSecond{integer} 17|44r62 83r34 103r43
+X 17 manualsample.adb
+13U11*Manualsample 13b11 107t4
+16r4 Wh{32|7R9} 47m15 54r24 65r24 92m21 92r21 93m18 93r18 94r27
+18r4 Br{12|8R9} 48m15 57m22 57r22 64r24 78m31 78r31 87m28 87r28 92r18
+20r4 SS{19|9R9} 49m21 54m21 54r21 94m24 94r24 97r43
+22r4 Bus{13|8R9} 50m16 68m28 68r28 91m19 91r19
+24i4 TickCount{natural} 60r11 61m7 61r20 83r10 103r14
+26f4 MeasuredVel{18|11F9} 97m7 98r45
+29r4 CurrentMessage{13|45R9} 68m49 71r35 73r13 75r23 78r34
+31b4 MessageAvailable{boolean} 68m32 69r10
+35f4 INITIAL_BRAKE_PRESSURE{18|37F9} 57r25
+40f4 ZERO_BRAKE_PRESSURE{18|37F9} 87r31
+44i4 NUM_TICKS_TO_RUN_FOR{natural} 60r23
+X 18 measures.ads
+3K9*Measures 17|4w6 26r18 26r35 35r38 36r6 40r35 41r6 41r29 18|60e13
+11F9*KMPH<short_float> 17|26r27 26r44
+31f4*MIN_BRAKE_PRESSURE{float} 17|41r38
+37F9*BrakePressure<short_float> 17|35r47 36r15 40r44 41r15
+X 19 speedsensor.ads
+6K9*SpeedSensor 17|5w6 20r9 49r4 54r4 94r7 97r22 19|28e16
+9R9*SpeedSensor 17|20r21 19|26e14
+13U14*Init 17|49s16
+16U14*Tick 17|54s16 94s19
+20V13*GetSpeed{18|11F9} 17|97s34
+X 32 wheel.ads
+4K9*Wheel 17|2w6 16r9 47r4 65r7 93r7 32|43e10
+7R9*Wheel 17|16r15 32|41e14
+11U14*Init 17|47s10
+25U14*Tick 17|93s13
+28U14*DebugPrint 17|65s13
+

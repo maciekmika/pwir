@@ -1,0 +1,42 @@
+V "GNAT Lib v2017"
+A -gnatA
+A -mtune=generic
+A -march=pentium4
+P ZX
+
+RN
+RV NO_FLOATING_POINT
+RV NO_IMPLEMENTATION_PRAGMAS
+
+U measures%b		measures.adb		8cb58a49 NE OO PK
+
+U measures%s		measures.ads		c7781018 EE NE OO PK
+
+D measures.ads		20171221051936 c7781018 measures%s
+D measures.adb		20171221051936 4bcd9a51 measures%b
+D system.ads		20170516105954 32a08138 system%s
+X 1 measures.ads
+3K9*Measures 60l5 60e13 2|1b14 36l5 36t13
+6f4*MIN_KMPH{float} 11r32
+8f4*MAX_KMPH{float} 11r44
+11F9*KMPH<short_float> 48r48 2|19r48 21r14 21r38 21r57
+16f4*MIN_MPS2{float} 23r32
+20f4*MAX_MPS2{float} 23r44
+23F9*MPS2<long_float> 28r33 28r41 52r48 2|24r48 26r14 26r38 26r57
+28f4*MAX_PRESSURE_MPS2{23F9}
+31f4*MIN_BRAKE_PRESSURE{float} 38r6
+34f4*MAX_BRAKE_PRESSURE{float} 38r28
+37F9*BrakePressure<short_float> 56r57 2|29r57 31r14 32r40 33r40
+42V13*Limit{float} 42>19 42>37 42>53 2|3b13 17l8 17t13 21s19 26s19 31s28
+42f19 Input{float} 2|3b19 8r10 10r13 13r20
+42f37 Fst{float} 2|3b37 8r18 9r20
+42f53 Lst{float} 2|3b53 10r21 11r20
+48V13*LimitKMPH{11F9} 48>23 2|19b13 22l8 22t17
+48f23 Input{float} 2|19b23 21r25
+52V13*LimitMPS2{23F9} 52>23 2|24b13 27l8 27t17
+52f23 Input{float} 2|24b23 26r25
+56V13*LimitBrakePressure{37F9} 56>32 2|29b13 34l8 34t26
+56f32 Input{float} 2|29b32 31r34
+X 2 measures.adb
+6f7 Output{float} 9m10 11m10 13m10 16r14
+
