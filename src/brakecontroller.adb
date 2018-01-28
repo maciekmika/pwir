@@ -21,7 +21,7 @@ package body BrakeController is
       Bc.currentVelocity := Measures.KMPH(0.0);
       Bc.averageVelocityThreshold := Measures.KMPH(15.0);
       Bc.velocityChangeThreshold := Measures.KMPH(10.0);
-      Bc.appliedPressure := Measures.BrakePressure(1.0);
+      Bc.appliedPressure := Measures.BrakePressure(0.0);
       -- Init as 1.0 before getting the adjust pressure update msg
       Bc.pressureToBeRestored := Measures.BrakePressure(1.0);
       Bc.averageVelocity := 0.0;
@@ -260,6 +260,7 @@ package body BrakeController is
                   New_Line;
                   -- Directly adjust pressure
                   Brake.SetPressure(Br,Bc.currentMessage.Pressure);
+                  Brake.Tick(Br, Wh);
                end if;
             else
                -- the pressure will be applied in the abs progress
@@ -437,13 +438,13 @@ package body BrakeController is
       else
          Put("OFF");
       end if;
-      New_Line;
-      Put("Velocity Change Threshold :");
-      Put(float(Bc.velocityChangeThreshold));
-      New_Line;
-      Put("Average Velocity Threshold :");
-      Put(float(Bc.averageVelocityThreshold));
-      New_Line;
+      --New_Line;
+      ---Put("Velocity Change Threshold :");
+      --Put(float(Bc.velocityChangeThreshold));
+      --New_Line;
+     -- Put("Average Velocity Threshold :");
+      --Put(float(Bc.averageVelocityThreshold));
+      --New_Line;
 
 
       -- Get data only after the egine startig, reasons are: the wheel sholud

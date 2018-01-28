@@ -74,6 +74,23 @@ package body CANBus  is
       end if;
    end Init;
 
+
+
+
+   procedure Braking(Bus : out CANBus) is
+      BrakeMessagePressure : Measures.BrakePressure :=
+        Measures.BrakePressure(
+                                         Measures.MAX_BRAKE_PRESSURE
+                                   );
+   begin
+      Bus.CurrentMessageAvailable := True;
+      Bus.CurrentMessage :=  (MessageType => BrakePressureUpdate, Pressure => BrakeMessagePressure);
+   end Braking;
+
+
+
+
+
    procedure GetNewMessage(Bus : in out CANBus;
                            NewMessageAvailable : out Boolean;
                            Message : out CANBusMessage) is
@@ -83,8 +100,6 @@ package body CANBus  is
          Message := Bus.CurrentMessage;
       end if;
    end GetNewMessage;
-
-
 
    procedure SendMessage(Bus : in out CANBus;
                          Message : in CANBusMessage) is

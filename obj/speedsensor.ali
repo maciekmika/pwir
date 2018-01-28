@@ -31,7 +31,7 @@ D system.ads		20170516105954 32a08138 system%s
 D s-exctab.ads		20170516105954 54135002 system.exception_table%s
 D s-rannum.ads		20170516105952 99ade2f2 system.random_numbers%s
 D s-stalib.ads		20170516105954 09bd3940 system.standard_library%s
-D wheel.ads		20171221051936 893dbfb9 wheel%s
+D wheel.ads		20180128121156 893dbfb9 wheel%s
 X 6 measures.ads
 3K9*Measures 60e13 8|1w6 20r50 25r23 9|1w6 1r20 16r40 17r6 23r27 23r46 27r38
 . 27r60 38r9 45r18

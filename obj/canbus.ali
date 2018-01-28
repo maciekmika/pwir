@@ -14,7 +14,7 @@ RV NO_DYNAMIC_SIZED_OBJECTS
 RV NO_IMPLEMENTATION_PRAGMAS
 RV SPARK_05
 
-U canbus%b		canbus.adb		787ac0d5 NE OO PK
+U canbus%b		canbus.adb		f18b7d6a NE OO PK
 W ada%s			ada.ads			ada.ali
 W ada.assertions%s	a-assert.adb		a-assert.ali
 W ada.exceptions%s	a-except.adb		a-except.ali
@@ -29,7 +29,7 @@ W randomnumber%s	randomnumber.adb	randomnumber.ali
 W system%s		system.ads		system.ali
 W system.img_enum_new%s	s-imenne.adb		s-imenne.ali
 
-U canbus%s		canbus.ads		dfea2823 EE NE OO PK
+U canbus%s		canbus.ads		fcf328b4 EE NE OO PK
 W ada.tags%s		a-tags.adb		a-tags.ali
 W measures%s		measures.adb		measures.ali
 
@@ -47,8 +47,8 @@ D a-textio.ads		20170516105954 386df5d4 ada.text_io%s
 D a-tiflio.ads		20170516105948 56fbda09 ada.text_io.float_io%s
 D a-tiinio.ads		20170516105950 aa04e5d6 ada.text_io.integer_io%s
 D a-unccon.ads		20170516105954 31484697 ada.unchecked_conversion%s
-D canbus.ads		20171221051936 1892383b canbus%s
-D canbus.adb		20171221051936 1672d1d7 canbus%b
+D canbus.ads		20180128155040 3b8b38ac canbus%s
+D canbus.adb		20180128160238 bc9a6cff canbus%b
 D interfac.ads		20170516105950 5ab55268 interfaces%s
 D i-cstrea.ads		20170516105950 e53d8b8e interfaces.c_streams%s
 D measures.ads		20171221051936 c7781018 measures%s
@@ -69,7 +69,7 @@ D s-traent.ads		20170516105950 005bf670 system.traceback_entries%s
 D s-unstyp.ads		20170516105952 34867c83 system.unsigned_types%s
 D s-wchcon.ads		20170516105954 1b7d22d2 system.wch_con%s
 X 1 ada.ads
-16K9*Ada 20e8 16|2r6 2r46 3r6 3r24 4r6 4r29 5r6 5r31 6r6 63r19 93r7
+16K9*Ada 20e8 16|2r6 2r46 3r6 3r24 4r6 4r29 5r6 5r31 6r6 63r19 108r7
 X 2 a-assert.ads
 50K13*Assertions 66e19 16|6w10 63r23
 55X4*Assertion_Error 16|63r34
@@ -83,31 +83,32 @@ X 8 a-nuflra.ads
 41K22*Float_Random 74e30 16|2w19 2r59
 49F12*Uniformly_Distributed{float} 16|12r44 16r41
 X 11 a-textio.ads
-49K13*Text_IO 471e16 16|3w10 3r28 93r11
-166U14*New_Line 16|93s56 102s52 104s33 107s50 110s51 117s22 122s59 130s22
-. 133s56
-242U14*Put 16|93s19 101s12 102s42 104s13 106s12 107s12 107s40 109s12 110s12
-. 110s41 112s12 113s12 113s41 115s12 117s12 119s12 120s12 120s45 121s38 122s49
-. 124s12 125s12 126s12 128s12 130s12 132s12 133s12 133s46
+49K13*Text_IO 471e16 16|3w10 3r28 108r11
+166U14*New_Line 16|108s56 117s52 119s33 122s50 125s51 132s22 137s59 145s22
+. 148s56
+242U14*Put 16|108s19 116s12 117s42 119s13 121s12 122s12 122s40 124s12 125s12
+. 125s41 127s12 128s12 128s41 130s12 132s12 134s12 135s12 135s45 136s38 137s49
+. 139s12 140s12 141s12 143s12 145s12 147s12 148s12 148s46
 X 12 a-tiflio.ads
-68U14*Put 16|102s12[4|20] 114s12[4|20] 116s12[4|20] 122s12[4|20] 127s12[4|20]
-. 129s12[4|20]
+68U14*Put 16|117s12[4|20] 129s12[4|20] 131s12[4|20] 137s12[4|20] 142s12[4|20]
+. 144s12[4|20]
 X 13 a-tiinio.ads
-66U14*Put 16|121s12[5|18]
+66U14*Put 16|136s12[5|18]
 X 15 canbus.ads
-5K9*CANBus 90E9 98l5 98e11 16|8b14 145l5 145t11
-8R9*CANBus 11r29 75r41 80r39 87r32 90c9 96e14 16|68r29 77r41 89r39 137r33
-11U14*Init 11<19 16|68b14 75l8 75t12 142s7
+5K9*CANBus 92E9 100l5 100e11 16|8b14 160l5 160t11
+8R9*CANBus 11r29 75r41 80r39 87r32 89r32 92c9 98e14 16|68r29 80r32 94r41
+. 104r39 152r33
+11U14*Init 11<19 16|68b14 75l8 75t12 157s7
 11r19 Bus{8R9} 16|68b19 70m7 72r10 73m10
 16E9*CANBusMessageType 23e54 29r6 34r6 45r37 16|20r17 21r9
-16n31*BrakePressureUpdate{16E9} 29r28 47r15 16|48r15 49r36 100r15
-17n31*EngineStart{16E9} 45r58 16|53r15 54r36 103r15
-18n31*VelocityRequest{16E9} 49r15 16|51r15 52r36 105r15
-19n31*ReadSettingsRequest{16E9} 51r15 16|55r15 56r36 108r15
-20n31*ChangeSettingsRequest{16E9} 34r28 53r15 16|57r15 58r36 111r15
-21n31*VelocityResponse{16E9} 57r15 16|118r15
-22n31*ReadSettingsResponse{16E9} 61r15 16|123r15
-23n31*ChangeSettingsResponse{16E9} 65r15 16|131r15
+16n31*BrakePressureUpdate{16E9} 29r28 47r15 16|48r15 49r36 87r46 115r15
+17n31*EngineStart{16E9} 45r58 16|53r15 54r36 118r15
+18n31*VelocityRequest{16E9} 49r15 16|51r15 52r36 120r15
+19n31*ReadSettingsRequest{16E9} 51r15 16|55r15 56r36 123r15
+20n31*ChangeSettingsRequest{16E9} 34r28 53r15 16|57r15 58r36 126r15
+21n31*VelocityResponse{16E9} 57r15 16|133r15
+22n31*ReadSettingsResponse{16E9} 61r15 16|138r15
+23n31*ChangeSettingsResponse{16E9} 65r15 16|146r15
 28i4*FIRST_TOEBS_MESSAGE_INDEX{integer} 16|22r41
 33i4*LAST_TOEBS_MESSAGE_INDEX{integer} 16|23r41
 37E9*Principal 37e54 50r23 52r24 54r24 58r28 62r29 66r29 16|25r14 26r9 27r41
@@ -115,36 +116,38 @@ X 15 canbus.ads
 37n23*Driver{37E9}
 37n31*Manufacturer{37E9}
 37n45*Mechanic{37E9}
-45R9*CANBusMessage 45d23 70e14 77r42 81r39 84r45 95r24 16|19r42 79r42 90r39
-. 97r45
-45e23*MessageType{16E9} 46r12 16|49m21 52m21 54m21 56m21 58m21 99r20
-48f13*Pressure{19|37F9} 16|50m21 102r30
-50e13*VSender{37E9} 16|52m53 107r24
-52e13*RSSender{37E9} 16|56m57 110r24
-54e13*CSSender{37E9} 16|58m59 113r24
-55f13*CSVelocityChangeThreshold{19|11F9} 16|59m21 114r30
-56f13*CSAverageVelocityThreshold{19|11F9} 16|60m21 116r30
-58e13*VDestination{37E9} 16|120r24
-59i13*CurrentTick{natural} 16|121r24
-60f13*CurrentVelocity{19|11F9} 16|122r30
-62e13*RSDestination{37E9} 16|125r24
-63f13*RSVelocityChangeThreshold{19|11F9} 16|127r30
-64f13*RSAverageVelocityThreshold{19|11F9} 16|129r30
-66e13*CSDestination{37E9} 16|133r24
-75U14*GetNewMessage 75=28 76<28 77<28 16|77b14 85l8 85t21
-75r28 Bus{8R9} 16|77b28 81r30 82r10 83r21
-76b28 NewMessageAvailable{boolean} 16|78b28 81m7
-77r28 Message{45R9} 16|79b28 83m10
-80U14*SendMessage 80=26 81>26 16|89b14 95l8 95t19
-80r26 Bus{8R9} 16|89b26
-81r26 Message{45R9} 16|90b26 94r25
-84U14*DebugPrintMessage 84>32 16|94s7 97b14 135l8 135t25
-84r32 Message{45R9} 16|97b32 99r12 102r22 107r16 110r16 113r16 114r22 116r22
-. 120r16 121r16 122r22 125r16 127r22 129r22 133r16
-87U14*Tick 87=19 16|137b14 143l8 143t12
-87r19 Bus{8R9} 16|137b20 142m12
-92b7*CurrentMessageAvailable{boolean} 16|70m11 72r14 81r34 82r14
-95r7*CurrentMessage{45R9} 16|73m14 83r25
+45R9*CANBusMessage 45d23 70e14 77r42 81r39 84r45 97r24 16|19r42 96r42 105r39
+. 112r45
+45e23*MessageType{16E9} 46r12 16|49m21 52m21 54m21 56m21 58m21 87m31 114r20
+48f13*Pressure{19|37F9} 16|50m21 87m67 117r30
+50e13*VSender{37E9} 16|52m53 122r24
+52e13*RSSender{37E9} 16|56m57 125r24
+54e13*CSSender{37E9} 16|58m59 128r24
+55f13*CSVelocityChangeThreshold{19|11F9} 16|59m21 129r30
+56f13*CSAverageVelocityThreshold{19|11F9} 16|60m21 131r30
+58e13*VDestination{37E9} 16|135r24
+59i13*CurrentTick{natural} 16|136r24
+60f13*CurrentVelocity{19|11F9} 16|137r30
+62e13*RSDestination{37E9} 16|140r24
+63f13*RSVelocityChangeThreshold{19|11F9} 16|142r30
+64f13*RSAverageVelocityThreshold{19|11F9} 16|144r30
+66e13*CSDestination{37E9} 16|148r24
+75U14*GetNewMessage 75=28 76<28 77<28 16|94b14 102l8 102t21
+75r28 Bus{8R9} 16|94b28 98r30 99r10 100r21
+76b28 NewMessageAvailable{boolean} 16|95b28 98m7
+77r28 Message{45R9} 16|96b28 100m10
+80U14*SendMessage 80=26 81>26 16|104b14 110l8 110t19
+80r26 Bus{8R9} 16|104b26
+81r26 Message{45R9} 16|105b26 109r25
+84U14*DebugPrintMessage 84>32 16|109s7 112b14 150l8 150t25
+84r32 Message{45R9} 16|112b32 114r12 117r22 122r16 125r16 128r16 129r22 131r22
+. 135r16 136r16 137r22 140r16 142r22 144r22 148r16
+87U14*Tick 87=19 16|152b14 158l8 158t12
+87r19 Bus{8R9} 16|152b20 157m12
+89U14*Braking 89<22 16|80b14 88l8 88t15
+89r22 Bus{8R9} 16|80b22 86m7 87m7
+94b7*CurrentMessageAvailable{boolean} 16|70m11 72r14 86m11 98r34 99r14
+97r7*CurrentMessage{45R9} 16|73m14 87m11 100r25
 X 16 canbus.adb
 12f4 NewMessageProbabilityPerTick{8|49F12} 71r44
 16f4 MessageIsBrakeProbability{8|49F12}
@@ -154,15 +157,16 @@ X 16 canbus.adb
 30f7 BrakeMessagePressure{19|37F9} 50r33
 35f7 NewVelocityChangeThreshold{19|11F9} 59r50
 40f7 NewAverageVelocityThreshold{19|11F9} 60r51
+81f7 BrakeMessagePressure{19|37F9} 87r79
 X 19 measures.ads
 3K9*Measures 15|1w6 48r24 55r41 56r42 60r31 63r41 64r42 16|30r30 31r9 32r42
-. 33r42 35r36 36r9 37r42 38r42 40r37 41r9 42r42 43r42 19|60e13
+. 33r42 35r36 36r9 37r42 38r42 40r37 41r9 42r42 43r42 81r30 82r9 83r42 19|60e13
 6f4*MIN_KMPH{float} 16|37r51 42r51
 8f4*MAX_KMPH{float} 16|38r51 43r51
 11F9*KMPH<short_float> 15|55r50 56r51 60r40 63r50 64r51 16|35r45 40r46
 31f4*MIN_BRAKE_PRESSURE{float} 16|32r51
-34f4*MAX_BRAKE_PRESSURE{float} 16|33r51
-37F9*BrakePressure<short_float> 15|48r33 16|30r39
+34f4*MAX_BRAKE_PRESSURE{float} 16|33r51 83r51
+37F9*BrakePressure<short_float> 15|48r33 16|30r39 81r39 82r18
 48V13*LimitKMPH{11F9} 16|36s18 41s18
 56V13*LimitBrakePressure{37F9} 16|31s18
 X 20 randomnumber.ads

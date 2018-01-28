@@ -48,6 +48,7 @@ procedure Main is
       entry Braking;
    end BrakeEvent;
    task type BrakeControllerLive;
+   task type CANBusLive;
 
    task body SpinningWheel is
       Next : Ada.Calendar.Time;
@@ -97,8 +98,8 @@ procedure Main is
       loop
          delay until Next;
          Wheel.DebugPrint(Wh); New_Line;
-         delay 0.1;
-         Put("Measured Velocity: "); Put(Float(MeasuredVel)); New_Line;
+         --delay 0.1;
+         --Put("Measured Velocity: "); Put(Float(MeasuredVel)); New_Line;
          Next := Next + Period;
       end loop;
 
@@ -108,6 +109,7 @@ procedure Main is
       Next : Ada.Calendar.Time;
       Period : constant Duration := 1.0;
    begin
+      --CANBus.Init(Bus);
       Next := Ada.Calendar.Clock;
       BrakeController.Init(BC);
       BrakeController.turnOn(BC);
@@ -115,9 +117,24 @@ procedure Main is
       loop
          delay until Next;
          BrakeController.Tick(BC, Wh, Br, Bus, SS);
+
+         BrakeController.getCanBusMessage(Bc, Bus, Br, Wh);
          Next := Next + Period;
       end loop;
    end BrakeControllerLive;
+
+   task body CANBusLive is
+      Next : Ada.Calendar.Time;
+      Period : constant Duration := 1.0;
+   begin
+      Next := Ada.Calendar.Clock;
+      CANBus.Init(Bus);
+      loop
+         delay until Next;
+         CANBus.Braking(Bus);
+         Next := Next + Period;
+      end loop;
+   end CANBusLive;
 
 
    NiceWheel : SpinningWheel;
@@ -125,8 +142,8 @@ procedure Main is
    NiceBrake : BrakeEvent;
    --PrintInConsole : Writing;
    NiceBrakeController : BrakeControllerLive;
-
+   NiceCANBus : CANBusLive;
 begin
-   delay 5.5;
-   NiceBrake.Braking;
+   delay 1.0;
+   --NiceBrake.Braking;
 end Main;

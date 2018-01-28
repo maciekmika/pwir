@@ -54,8 +54,8 @@ D s-stoele.ads		20170516105956 2dc34a04 system.storage_elements%s
 D s-traent.ads		20170516105950 005bf670 system.traceback_entries%s
 D s-unstyp.ads		20170516105952 34867c83 system.unsigned_types%s
 D s-wchcon.ads		20170516105954 1b7d22d2 system.wch_con%s
-D wheel.ads		20171221051936 893dbfb9 wheel%s
-D wheel.adb		20180127210438 cf5b3f67 wheel%b
+D wheel.ads		20180128121156 893dbfb9 wheel%s
+D wheel.adb		20180128122716 cf5b3f67 wheel%b
 X 1 ada.ads
 16K9*Ada 20e8 32|4r6 4r46 6r6 7r6 119r7 119r35 120r7 121r7 122r7 123r7 124r7
 . 125r7 126r7 126r41 127r7

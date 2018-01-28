@@ -86,6 +86,8 @@ package CANBus is
    -- called once per clock tick to update the CAN Bus
    procedure Tick(Bus : in out CANBus);
 
+   procedure Braking(Bus : out CANBus);
+
 private
    type CANBus is record
       -- whether there is a message currently available to be read on the bus
