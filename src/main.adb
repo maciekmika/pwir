@@ -48,7 +48,9 @@ procedure Main is
       entry Braking;
    end BrakeEvent;
    task type BrakeControllerLive;
-   task type CANBusLive;
+   task type CANBusLive is
+      entry Braking;
+   end CANBusLive;
 
    task body SpinningWheel is
       Next : Ada.Calendar.Time;
@@ -116,24 +118,20 @@ procedure Main is
       BrakeController.Tick(BC, Wh, Br, Bus, SS);
       loop
          delay until Next;
-         BrakeController.Tick(BC, Wh, Br, Bus, SS);
-
          BrakeController.getCanBusMessage(Bc, Bus, Br, Wh);
+         BrakeController.Tick(BC, Wh, Br, Bus, SS);
          Next := Next + Period;
       end loop;
    end BrakeControllerLive;
 
    task body CANBusLive is
-      Next : Ada.Calendar.Time;
-      Period : constant Duration := 1.0;
    begin
-      Next := Ada.Calendar.Clock;
       CANBus.Init(Bus);
-      loop
-         delay until Next;
+      accept Braking  do
          CANBus.Braking(Bus);
-         Next := Next + Period;
-      end loop;
+
+      end Braking;
+
    end CANBusLive;
 
 
@@ -145,5 +143,5 @@ procedure Main is
    NiceCANBus : CANBusLive;
 begin
    delay 1.0;
-   --NiceBrake.Braking;
+   NiceCANBus.Braking;
 end Main;

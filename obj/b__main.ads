@@ -35,7 +35,7 @@ package ada_main is
    pragma Export (C, main, "main");
 
    type Version_32 is mod 2 ** 32;
-   u00001 : constant Version_32 := 16#673fb82a#;
+   u00001 : constant Version_32 := 16#1872fb9f#;
    pragma Export (C, u00001, "mainB");
    u00002 : constant Version_32 := 16#b6df930e#;
    pragma Export (C, u00002, "system__standard_libraryB");
@@ -451,7 +451,7 @@ package ada_main is
    pragma Export (C, u00207, "system__img_boolB");
    u00208 : constant Version_32 := 16#c779f0d3#;
    pragma Export (C, u00208, "system__img_boolS");
-   u00209 : constant Version_32 := 16#44adcd9b#;
+   u00209 : constant Version_32 := 16#6497d607#;
    pragma Export (C, u00209, "brakecontrollerB");
    u00210 : constant Version_32 := 16#30526d09#;
    pragma Export (C, u00210, "brakecontrollerS");

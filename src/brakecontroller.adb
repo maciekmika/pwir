@@ -300,6 +300,7 @@ package body BrakeController is
             when VelocityRequest => VelocityResponse(Bc,Bus); -- Response to read velocity request
             when others => return;
          end case;
+         CANBus.Tick(Bus);
       else
         return;
       end if;
