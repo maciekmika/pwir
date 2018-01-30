@@ -1,0 +1,161 @@
+V "GNAT Lib v2017"
+M P W=b
+A -gnatA
+A -mtune=generic
+A -march=pentium4
+P ZX
+
+RN
+RV NO_CALENDAR
+RV NO_DELAY
+RV NO_EXCEPTION_HANDLERS
+RV NO_EXCEPTION_PROPAGATION
+RV NO_EXCEPTIONS
+RV NO_FLOATING_POINT
+RV NO_IO
+RV NO_LOCAL_PROTECTED_OBJECTS
+RV NO_NESTED_FINALIZATION
+RV NO_PROTECTED_TYPES
+RV NO_STANDARD_STORAGE_POOLS
+RV NO_TASK_HIERARCHY
+RV NO_TASKING
+RV NO_DEFAULT_INITIALIZATION
+RV NO_IMPLEMENTATION_ATTRIBUTES
+RV NO_IMPLEMENTATION_PRAGMAS
+RV SPARK_05
+RV MAX_PROTECTED_ENTRIES=1
+RV MAX_TASK_ENTRIES=1
+RV MAX_TASKS=1+
+
+U main%b		main.adb		a9f0bc9f NE OO SU
+W ada%s			ada.ads			ada.ali
+W ada.calendar%s	a-calend.adb		a-calend.ali
+W ada.exceptions%s	a-except.adb		a-except.ali
+W ada.numerics%s	a-numeri.ads		a-numeri.ali
+W ada.numerics.elementary_functions%s  a-nuelfu.ads  a-nuelfu.ali
+W ada.real_time%s	a-reatim.adb		a-reatim.ali
+W ada.tags%s		a-tags.adb		a-tags.ali
+W ada.text_io%s		a-textio.adb		a-textio.ali
+W system%s		system.ads		system.ali
+W system.img_int%s	s-imgint.adb		s-imgint.ali
+W system.parameters%s	s-parame.adb		s-parame.ali
+W system.soft_links%s	s-soflin.adb		s-soflin.ali
+W system.standard_library%s  s-stalib.adb	s-stalib.ali
+W system.task_info%s	s-tasinf.adb		s-tasinf.ali
+W system.tasking%s	s-taskin.adb		s-taskin.ali
+W system.tasking.protected_objects%s  s-taprob.adb  s-taprob.ali
+W system.tasking.protected_objects.entries%s  s-tpoben.adb  s-tpoben.ali
+W system.tasking.protected_objects.operations%s  s-tpobop.adb  s-tpobop.ali
+W system.tasking.rendezvous%s  s-tasren.adb	s-tasren.ali
+W system.tasking.stages%s  s-tassta.adb		s-tassta.ali
+
+D ada.ads		20170516105950 76789da1 ada%s
+D a-calend.ads		20170516105954 2d5f01d4 ada.calendar%s
+D a-except.ads		20170516105952 291912d5 ada.exceptions%s
+D a-finali.ads		20170516105954 bf4f806b ada.finalization%s
+D a-ioexce.ads		20170516105948 e4a01f64 ada.io_exceptions%s
+D a-numeri.ads		20170516105950 bb51c45a ada.numerics%s
+D a-nuelfu.ads		20170516105950 03e83d1c ada.numerics.elementary_functions%s
+D a-ngelfu.ads		20170516105954 7e738940 ada.numerics.generic_elementary_functions%s
+D a-reatim.ads		20170516105950 a87e2da7 ada.real_time%s
+D a-stream.ads		20170516105952 119b8fb3 ada.streams%s
+D a-tags.ads		20170516105954 d3a89129 ada.tags%s
+D a-textio.ads		20170516105954 386df5d4 ada.text_io%s
+D a-unccon.ads		20170516105954 31484697 ada.unchecked_conversion%s
+D interfac.ads		20170516105950 5ab55268 interfaces%s
+D i-c.ads		20170516105948 5421119b interfaces.c%s
+D i-cstrin.ads		20170516105952 341d0ddf interfaces.c.strings%s
+D i-cstrea.ads		20170516105950 e53d8b8e interfaces.c_streams%s
+D main.adb		20180130161712 bf2a7583 main%b
+D system.ads		20170516105954 32a08138 system%s
+D s-atacco.ads		20170516105954 4c36d12f system.address_to_access_conversions%s
+D s-crtl.ads		20170516105948 0ebbdb71 system.crtl%s
+D s-exctab.ads		20170516105954 54135002 system.exception_table%s
+D s-ficobl.ads		20170516105956 078245e4 system.file_control_block%s
+D s-finroo.ads		20170516105954 4ff27390 system.finalization_root%s
+D s-imgint.ads		20170516105950 02dbe0c2 system.img_int%s
+D s-memory.ads		20170516105952 597d6634 system.memory%s
+D s-multip.ads		20170516105948 38ac9f73 system.multiprocessors%s
+D s-osinte.ads		20170516105954 2e5b26a9 system.os_interface%s
+D s-parame.ads		20170516105954 7e2a0d7f system.parameters%s
+D s-soflin.ads		20170516105950 14e1eb6c system.soft_links%s
+D s-stache.ads		20170516105954 a37c21ec system.stack_checking%s
+D s-stausa.ads		20170516105954 017a0a05 system.stack_usage%s
+D s-stalib.ads		20170516105954 09bd3940 system.standard_library%s
+D s-stalib.adb		20170516105948 f2fe2716 system.standard_library%b
+D s-stoele.ads		20170516105956 2dc34a04 system.storage_elements%s
+D s-tasinf.ads		20170516105952 601f6b72 system.task_info%s
+D s-taspri.ads		20170516105952 6c1d93d4 system.task_primitives%s
+D s-taprop.ads		20170516105950 1dd2e1b6 system.task_primitives.operations%s
+D s-taskin.ads		20170516105956 05d6152c system.tasking%s
+D s-taprob.ads		20170516105950 acd6094d system.tasking.protected_objects%s
+D s-tpoben.ads		20170516105956 60ad3dae system.tasking.protected_objects.entries%s
+D s-tpobop.ads		20170516105954 5f548bb3 system.tasking.protected_objects.operations%s
+D s-tasren.ads		20170516105950 a67a9949 system.tasking.rendezvous%s
+D s-tassta.ads		20170516105952 5a53a7c6 system.tasking.stages%s
+D s-traent.ads		20170516105950 005bf670 system.traceback_entries%s
+D s-unstyp.ads		20170516105952 34867c83 system.unsigned_types%s
+D s-wchcon.ads		20170516105954 1b7d22d2 system.wch_con%s
+D s-win32.ads		20170516105948 b7f96285 system.win32%s
+X 1 ada.ads
+16K9*Ada 20e8 18|1r6 2r5 3r6 3r25 4r6 148r26
+X 2 a-calend.ads
+36K13*Calendar 395e17 18|3w10 3r29
+X 6 a-numeri.ads
+16K13*Numerics 32e17 18|4r10 148r30
+X 7 a-nuelfu.ads
+18K22*Elementary_Functions[8|39] 18|4w19 148r39
+X 8 a-ngelfu.ads
+44V13*Sqrt{float} 18|148s60[7|18]
+X 12 a-textio.ads
+49K13*Text_IO 471e16 18|1w10 2r9
+263U14*Put_Line 18|80s10 87s10 105s10 111s13 118s10 131s7 139s13 150s10 154s4
+X 18 main.adb
+8U11*Main 8b11 165l5 165t9
+11W16 Semafor_Bin 11d28 15E4 16l5 16e16 18b16 27l5 27t16 29r11
+11b28 Init_Sem{boolean} 15r19
+12Y9 Czekaj 19b9 22l7 22t13
+13U13 Sygnalizuj 23b13 26l7 26t17
+15b4 S{boolean} 19r21 21r5 25r5
+29w1 Semafor1{11W16}
+31b4 CzyHamulecWcisniety{boolean}
+32f4 SilaHamowania{float} 81m10 108r34 137m13 137r30 138r37 148r88
+33f4 PredkoscAuta{float} 134r13 143r44 143r57 145r27 148m10 149r37
+34f4 MasaAuta{float} 108r72 138r75 143r35 148r117
+35f4 PrzyspieszenieZiemskie{float} 108r49 138r52
+36f4 WspoczynnikPodloza{float} 110r34 136r37
+43T14 SterownikABS 45l8 45e20 54r41 63r30 79r31 102r42 124b14 155l8 155t20
+. 160r8
+44Y13 Start 112s21 130b14
+53T14 Czujnik 55l8 55e15 63r58 79r59 98b14 122l8 122t15 159r9
+54Y13 StartCzujnika 54>28 82s19 102b14 119l11 119t24
+54t28 ABSster{43T14} 112r13
+62T14 Hamulec 65l8 65e15 76b14 89l8 89t15 158r8
+63Y13 Start 63>20 63>44 79b14 83l11 83t16 162s6
+63t20 ABSo{43T14} 82r33
+63t44 Czujniko{53T14} 82r10
+64Y13 Koniec 85b14 88l11 88t17
+69T14 Podloze 70l8 70e15 93b14 96l8 96t15
+79t21 ABSo{43T14}
+79t45 Czujniko{53T14}
+99f7 AktualnyWspolczynnik{float} 108m10 110r13
+102t29 ABSster{43T14}
+125f7 EnergiaPoczatkowa{float} 143m10 148r70
+126f7 AktualnyWspolczynnik{float} 136r16 138m13
+127f7 DrogaPrzebyta{float} 145m10 148r102
+128i7 PredkoscInteger{integer} 149m10 150r19
+158t4 H{62T14} 162r4
+159t4 Cz{53T14} 162r14
+160t4 S{43T14} 162r12
+X 19 system.ads
+67M9*Address
+X 26 s-memory.ads
+53V13*Alloc{19|67M9} 103i<c,__gnat_malloc>22
+68U14*Free 104i<c,__gnat_free>22
+76V13*Realloc{19|67M9} 105i<c,__gnat_realloc>22
+X 32 s-stausa.ads
+203U14*Initialize 204i<c,__gnat_stack_usage_initialize>22
+268U14*Output_Results 272i<c,__gnat_stack_usage_output_results>22
+X 34 s-stalib.adb
+93U14 Break_Start 94i<c,__gnat_break_start>22
+
