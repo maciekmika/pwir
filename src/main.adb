@@ -57,7 +57,7 @@ procedure Main is
    begin
       EnergiaPoczatkowa := 0.5*MasaAuta*PredkoscAuta*PredkoscAuta;
             -- obliczamy droge przebyta przez 1 sekunde
-            DrogaPrzebyta := PredkoscAuta;
+            DrogaPrzebyta := PredkoscAuta/10.0;
             -- obliczamy predkosc po jednej sekundzie dzialania sily hamowania
             --
             Zmienna :=  EnergiaPoczatkowa-SilaHamowania*DrogaPrzebyta;
@@ -78,14 +78,14 @@ procedure Main is
    begin
       accept Start (ABSo : in SterownikABS; CzujnikO : in Czujnik) do
          Put_Line("Hamulec nacisniety");
-         SilaHamowania := 5625.0;
+         SilaHamowania := 5825.0;
          CzyHamulecWcisniety := True;
          delay 0.2;
          while PredkoscAuta > 0.0 and ABSwlaczony = False loop
             Put_Line("hamulec bez absu");
             --obliczamy energie poczatkowa
             ObliczaniePredkosci;
-            delay 1.0;
+            delay 0.1;
          end loop;
 
       end Start;
@@ -103,14 +103,14 @@ procedure Main is
          RandomFloat := ada.numerics.float_random.Random(g);
          ZmianaPodloza := RandomFloat/10.0;
 
-         Put_Line("Zmiana podloza" & ZmianaPodloza'Img);
+         --Put_Line("Zmiana podloza" & ZmianaPodloza'Img);
          if RandomFloat > 0.5 then
             WspoczynnikPodloza := WspoczynnikPodlozaPodstawa-ZmianaPodloza;
          else
             WspoczynnikPodloza := WspoczynnikPodlozaPodstawa+ZmianaPodloza;
          end if;
 
-         delay 1.0;
+         delay 0.1;
       end loop;
    end Podloze;
 
@@ -161,10 +161,10 @@ procedure Main is
          end loop;
 
          ObliczaniePredkosci;
-         delay 1.0;
+         delay 0.1;
 
       end loop;
-   Put_Line("koniec ABSu");
+      Put_Line("koniec ABSu");
    end SterownikABS;
 
 
