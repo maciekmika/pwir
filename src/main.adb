@@ -7,33 +7,14 @@ with Ada.Numerics.Elementary_Functions;
 
 procedure Main is
 
-   -- typ chroniony
-protected type Semafor_Bin(Init_Sem: Boolean := True) is
-  entry Czekaj;
-  procedure Sygnalizuj;
-  private
-   S : Boolean := Init_Sem;
-end Semafor_Bin ;
-
-protected body Semafor_Bin  is
-  entry Czekaj when S is
-  begin
-    S := False;
-  end Czekaj;
-  procedure Sygnalizuj  is
-  begin
-    S := True;
-  end Sygnalizuj;
-end Semafor_Bin ;
-
-Semafor1: Semafor_Bin(False);
-
    CzyHamulecWcisniety: Boolean := False with Atomic;
    SilaHamowania : Float := 0.0 with Atomic;
    PredkoscAuta : Float := 25.0 with Atomic; -- w metrach na sekunde
    MasaAuta : Float := 900.0;
    PrzyspieszenieZiemskie : Float := 10.0;
-   WspoczynnikPodloza : Float := 0.7;
+   WspoczynnikPodloza : Float := 0.4;
+
+   ABSwlaczony : Boolean := False with Atomic;
 
 
 
@@ -61,7 +42,6 @@ Semafor1: Semafor_Bin(False);
    -- wysyla sygnal do czujnika ze dziala
    task type Hamulec is
       entry Start (ABSo : in SterownikABS; Czujniko : in Czujnik);
-      entry Koniec;
    end Hamulec;
 
    -- na poczatku wspolczynnik staly
@@ -70,22 +50,48 @@ Semafor1: Semafor_Bin(False);
    end Podloze;
 
 
+   procedure ObliczaniePredkosci is
+      EnergiaPoczatkowa : Float :=0.0;
+      DrogaPrzebyta : Float;
+      PredkoscInteger : Integer;
+      Zmienna : Float;
+   begin
+      EnergiaPoczatkowa := 0.5*MasaAuta*PredkoscAuta*PredkoscAuta;
+            -- obliczamy droge przebyta przez 1 sekunde
+            DrogaPrzebyta := PredkoscAuta;
+            -- obliczamy predkosc po jednej sekundzie dzialania sily hamowania
+            --
+            Zmienna :=  EnergiaPoczatkowa-SilaHamowania*DrogaPrzebyta;
+            if Zmienna >= 0.0 then
+               PredkoscAuta := Ada.Numerics.Elementary_Functions.Sqrt(2.0*(Zmienna)/MasaAuta); -- to powinno byc w pierwiastku
+            else
+               PredkoscAuta := 0.0;
+            end if;
+
+            PredkoscInteger := Integer(PredkoscAuta);
+            Put_Line(PredkoscInteger'Img);
+   end ObliczaniePredkosci;
 
 
 
    task body Hamulec is
 
    begin
-      accept Start (ABSo : in SterownikABS; Czujniko : in Czujnik) do
+      accept Start (ABSo : in SterownikABS; CzujnikO : in Czujnik) do
          Put_Line("Hamulec nacisniety");
          SilaHamowania := 6625.0;
-         Czujniko.StartCzujnika(ABSo);
+         CzujnikO.StartCzujnika(ABSo);
+
+         while PredkoscAuta > 0.0 and ABSwlaczony = False loop
+            Put_Line("hamulec bez absu");
+            --obliczamy energie poczatkowa
+            ObliczaniePredkosci;
+            delay 1.0;
+
+         end loop;
+
       end Start;
 
-      accept Koniec  do
-
-         Put_Line("Koniec hamowania");
-      end Koniec;
    end Hamulec;
 
 
@@ -109,6 +115,7 @@ Semafor1: Semafor_Bin(False);
          -- if aktualny_wsp>podloze_wsp => kola zablokowane
          if AktualnyWspolczynnik>WspoczynnikPodloza then
             Put_Line("Kola zablokowane");
+            ABSwlaczony := True;
             ABSster.Start;
          end if;
          -- wlacz abs
@@ -122,16 +129,13 @@ Semafor1: Semafor_Bin(False);
    end Czujnik;
 
    task body SterownikABS is
-      EnergiaPoczatkowa : Float :=0.0;
       AktualnyWspolczynnik : Float := 0.8;
-      DrogaPrzebyta : Float;
-      PredkoscInteger : Integer;
    begin
       accept Start;
       Put_Line("Wlaczony ABS");
 
       --dopoki predkosc nie jest zero
-      while PredkoscAuta > 3.0 loop
+      while PredkoscAuta > 0.0 loop
          -- dobieramy odpowiednia sile
          while AktualnyWspolczynnik>WspoczynnikPodloza loop
             SilaHamowania := SilaHamowania-1000.0;
@@ -139,16 +143,8 @@ Semafor1: Semafor_Bin(False);
             Put_Line("in");
          end loop;
 
-         --obliczamy energie poczatkowa
-         EnergiaPoczatkowa := 0.5*MasaAuta*PredkoscAuta*PredkoscAuta;
-         -- obliczamy droge przebyta przez 1 sekunde
-         DrogaPrzebyta := PredkoscAuta;
-         -- obliczamy predkosc po jednej sekundzie dzialania sily hamowania
-         --
-         PredkoscAuta := Ada.Numerics.Elementary_Functions.Sqrt(2.0*(EnergiaPoczatkowa-SilaHamowania*DrogaPrzebyta)/MasaAuta); -- to powinno byc w pierwiastku
-         PredkoscInteger := Integer(PredkoscAuta);
-         Put_Line(PredkoscInteger'Img);
-         --delay 1.0;
+         ObliczaniePredkosci;
+         delay 1.0;
 
       end loop;
    Put_Line("koniec ABSu");
@@ -160,6 +156,4 @@ Semafor1: Semafor_Bin(False);
    S : SterownikABS;
 begin
    H.Start(S,Cz);
-  --         delay 5.0;
-  -- H.Koniec;
 end Main;
