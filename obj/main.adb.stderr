@@ -1,0 +1,3 @@
+main.adb:22:04: declaration expected
+main.adb:23:45: aspect specifications not allowed here
+main.adb:32:04: no "record" for this "end record"

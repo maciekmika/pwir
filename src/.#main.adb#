@@ -19,7 +19,7 @@ procedure Main is
 
 
 
-   record BoxWithGlobals is record
+   type BoxWithGlobals is record
       CzyHamulecWcisniety: Boolean := False with Atomic;
       SilaHamowania : Float := 0.0 with Atomic;
       PredkoscAuta : Float := 25.0 with Atomic; -- w metrach na sekunde

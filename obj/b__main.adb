@@ -37,11 +37,11 @@ package body ada_main is
    E124 : Short_Integer; pragma Import (Ada, E124, "ada__real_time_E");
    E158 : Short_Integer; pragma Import (Ada, E158, "ada__text_io_E");
    E120 : Short_Integer; pragma Import (Ada, E120, "system__random_seed_E");
-   E176 : Short_Integer; pragma Import (Ada, E176, "system__tasking__initialization_E");
-   E184 : Short_Integer; pragma Import (Ada, E184, "system__tasking__protected_objects_E");
-   E186 : Short_Integer; pragma Import (Ada, E186, "system__tasking__protected_objects__entries_E");
-   E190 : Short_Integer; pragma Import (Ada, E190, "system__tasking__queuing_E");
-   E196 : Short_Integer; pragma Import (Ada, E196, "system__tasking__stages_E");
+   E181 : Short_Integer; pragma Import (Ada, E181, "system__tasking__initialization_E");
+   E189 : Short_Integer; pragma Import (Ada, E189, "system__tasking__protected_objects_E");
+   E191 : Short_Integer; pragma Import (Ada, E191, "system__tasking__protected_objects__entries_E");
+   E195 : Short_Integer; pragma Import (Ada, E195, "system__tasking__queuing_E");
+   E201 : Short_Integer; pragma Import (Ada, E201, "system__tasking__stages_E");
 
    Local_Priority_Specific_Dispatching : constant String := "";
    Local_Interrupt_States : constant String := "";
@@ -50,7 +50,7 @@ package body ada_main is
 
    procedure finalize_library is
    begin
-      E186 := E186 - 1;
+      E191 := E191 - 1;
       declare
          procedure F1;
          pragma Import (Ada, F1, "system__tasking__protected_objects__entries__finalize_spec");
@@ -254,15 +254,15 @@ package body ada_main is
       System.Random_Seed'Elab_Body;
       E120 := E120 + 1;
       System.Tasking.Initialization'Elab_Body;
-      E176 := E176 + 1;
+      E181 := E181 + 1;
       System.Tasking.Protected_Objects'Elab_Body;
-      E184 := E184 + 1;
+      E189 := E189 + 1;
       System.Tasking.Protected_Objects.Entries'Elab_Spec;
-      E186 := E186 + 1;
+      E191 := E191 + 1;
       System.Tasking.Queuing'Elab_Body;
-      E190 := E190 + 1;
+      E195 := E195 + 1;
       System.Tasking.Stages'Elab_Body;
-      E196 := E196 + 1;
+      E201 := E201 + 1;
    end adainit;
 
    procedure Ada_Main_Program;
