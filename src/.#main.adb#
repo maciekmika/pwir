@@ -164,7 +164,7 @@ procedure Main is
          delay 1.0;
 
       end loop;
-   Put_Line("koniec ABSu");
+      Put_Line("koniec ABSu");
    end SterownikABS;
 
 

@@ -19,23 +19,27 @@ RV NO_STANDARD_STORAGE_POOLS
 RV NO_TASK_HIERARCHY
 RV NO_TASKING
 RV NO_DEFAULT_INITIALIZATION
+RV NO_DYNAMIC_SIZED_OBJECTS
 RV NO_IMPLEMENTATION_ATTRIBUTES
 RV NO_IMPLEMENTATION_PRAGMAS
 RV SPARK_05
 RV MAX_TASK_ENTRIES=1
 RV MAX_TASKS=1+
 
-U main%b		main.adb		32df3cd2 NE OO SU
+U main%b		main.adb		6f7b17a4 NE OO SU
 W ada%s			ada.ads			ada.ali
 W ada.calendar%s	a-calend.adb		a-calend.ali
 W ada.calendar.delays%s	a-caldel.adb		a-caldel.ali
 W ada.numerics%s	a-numeri.ads		a-numeri.ali
 W ada.numerics.elementary_functions%s  a-nuelfu.ads  a-nuelfu.ali
+W ada.numerics.float_random%s  a-nuflra.adb	a-nuflra.ali
 W ada.real_time%s	a-reatim.adb		a-reatim.ali
 W ada.tags%s		a-tags.adb		a-tags.ali
 W ada.text_io%s		a-textio.adb		a-textio.ali
 W system%s		system.ads		system.ali
+W system.concat_2%s	s-conca2.adb		s-conca2.ali
 W system.img_int%s	s-imgint.adb		s-imgint.ali
+W system.img_real%s	s-imgrea.adb		s-imgrea.ali
 W system.parameters%s	s-parame.adb		s-parame.ali
 W system.soft_links%s	s-soflin.adb		s-soflin.ali
 W system.task_info%s	s-tasinf.adb		s-tasinf.ali
@@ -51,6 +55,7 @@ D a-finali.ads		20170516105954 bf4f806b ada.finalization%s
 D a-ioexce.ads		20170516105948 e4a01f64 ada.io_exceptions%s
 D a-numeri.ads		20170516105950 bb51c45a ada.numerics%s
 D a-nuelfu.ads		20170516105950 03e83d1c ada.numerics.elementary_functions%s
+D a-nuflra.ads		20170516105950 4056ab7a ada.numerics.float_random%s
 D a-ngelfu.ads		20170516105954 7e738940 ada.numerics.generic_elementary_functions%s
 D a-reatim.ads		20170516105950 a87e2da7 ada.real_time%s
 D a-stream.ads		20170516105952 119b8fb3 ada.streams%s
@@ -61,17 +66,20 @@ D interfac.ads		20170516105950 5ab55268 interfaces%s
 D i-c.ads		20170516105948 5421119b interfaces.c%s
 D i-cstrin.ads		20170516105952 341d0ddf interfaces.c.strings%s
 D i-cstrea.ads		20170516105950 e53d8b8e interfaces.c_streams%s
-D main.adb		20180131125906 2405f5ce main%b
+D main.adb		20180131142228 39f775c2 main%b
 D system.ads		20170516105954 32a08138 system%s
 D s-atacco.ads		20170516105954 4c36d12f system.address_to_access_conversions%s
+D s-conca2.ads		20170516105952 02a0d7d0 system.concat_2%s
 D s-crtl.ads		20170516105948 0ebbdb71 system.crtl%s
 D s-exctab.ads		20170516105954 54135002 system.exception_table%s
 D s-ficobl.ads		20170516105956 078245e4 system.file_control_block%s
 D s-finroo.ads		20170516105954 4ff27390 system.finalization_root%s
 D s-imgint.ads		20170516105950 02dbe0c2 system.img_int%s
+D s-imgrea.ads		20170516105948 c7a851e2 system.img_real%s
 D s-multip.ads		20170516105948 38ac9f73 system.multiprocessors%s
 D s-osinte.ads		20170516105954 2e5b26a9 system.os_interface%s
 D s-parame.ads		20170516105954 7e2a0d7f system.parameters%s
+D s-rannum.ads		20170516105952 99ade2f2 system.random_numbers%s
 D s-soflin.ads		20170516105950 14e1eb6c system.soft_links%s
 D s-stache.ads		20170516105954 a37c21ec system.stack_checking%s
 D s-stausa.ads		20170516105954 017a0a05 system.stack_usage%s
@@ -90,52 +98,59 @@ D s-unstyp.ads		20170516105952 34867c83 system.unsigned_types%s
 D s-wchcon.ads		20170516105954 1b7d22d2 system.wch_con%s
 D s-win32.ads		20170516105948 b7f96285 system.win32%s
 X 1 ada.ads
-16K9*Ada 20e8 19|1r6 2r5 3r6 3r25 4r6 66r32
+16K9*Ada 20e8 20|1r6 2r5 3r6 3r25 4r6 5r6 65r32 98r11 103r25
 X 2 a-calend.ads
-36K13*Calendar 395e17 19|3w10 3r29
+36K13*Calendar 395e17 20|3w10 3r29
 X 7 a-numeri.ads
-16K13*Numerics 32e17 19|4r10 66r36
+16K13*Numerics 32e17 20|4r10 5r10 65r36 98r15 103r29
 X 8 a-nuelfu.ads
-18K22*Elementary_Functions[9|39] 19|4w19 66r45
-X 9 a-ngelfu.ads
-44V13*Sqrt{float} 19|66s66[8|18]
-X 13 a-textio.ads
-49K13*Text_IO 471e16 19|1w10 2r9
-263U14*Put_Line 19|72s13 81s10 86s13 111s10 117s13 125s10 135s7 143s13 150s4
-X 19 main.adb
-8U11*Main 8b11 159l5 159t9
-10b4 CzyHamulecWcisniety{boolean}
-11f4 SilaHamowania{float} 64r43 82m10 114r34 141m13 141r30 142r37
-12f4 PredkoscAuta{float} 59r41 59r54 61r30 66m16 68m16 71r40 85r16 138r13
-13f4 MasaAuta{float} 59r32 66r85 114r72 142r75
-14f4 PrzyspieszenieZiemskie{float} 114r49 142r52
-15f4 WspoczynnikPodloza{float} 116r34 140r37
-17b4 ABSwlaczony{boolean} 85r39 118m13
-24T14 SterownikABS 26l8 26e20 35r41 44r30 80r31 108r42 131b14 151l8 151t20
-. 156r8
-25Y13 Start 119s21 134b14
-34T14 Czujnik 36l8 36e15 44r58 80r59 104b14 129l8 129t15 155r9
-35Y13 StartCzujnika 35>28 83s19 108b14 126l11 126t24
-35t28 ABSster{24T14} 119r13
-43T14 Hamulec 45l8 45e15 77b14 95l8 95t15 154r8
-44Y13 Start 44>20 44>44 80b14 93l11 93t16 158s6
-44t20 ABSo{24T14} 83r33
-44t44 Czujniko{34T14} 83r10
-49T14 Podloze 50l8 50e15 99b14 102l8 102t15
-53U14 ObliczaniePredkosci 53b14 73l8 73t27 88s13 146s10
-54f7 EnergiaPoczatkowa{float} 59m7 64r25
-55f7 DrogaPrzebyta{float} 61m13 64r57
-56i7 PredkoscInteger{integer} 71m13 72r22
-57f7 Zmienna{float} 64m13 65r16 66r76
-80t21 ABSo{24T14}
-80t45 CzujnikO{34T14}
-105f7 AktualnyWspolczynnik{float} 114m10 116r13
-108t29 ABSster{24T14}
-132f7 AktualnyWspolczynnik{float} 140r16 142m13
-154t4 H{43T14} 158r4
-155t4 Cz{34T14} 158r14
-156t4 S{24T14} 158r12
-X 32 s-stausa.ads
+18K22*Elementary_Functions[10|39] 20|4w19 65r45
+X 9 a-nuflra.ads
+41K22*Float_Random 74e30 20|5w19 98r24 103r38
+47R9*Generator<33|63R9> 20|98r37
+49F12*Uniformly_Distributed{float}
+51V13*Random{49F12}<33|71p13> 20|103s51
+X 10 a-ngelfu.ads
+44V13*Sqrt{float} 20|65s66[8|18]
+X 14 a-textio.ads
+49K13*Text_IO 471e16 20|1w10 2r9
+263U14*Put_Line 20|71s13 80s10 85s13 106s10 125s10 132s16 139s10 151s7 167s4
+X 20 main.adb
+8U11*Main 8b11 178l5 178t9
+10b4 CzyHamulecWcisniety{boolean} 82m10 120r16
+11f4 SilaHamowania{float} 63r43 81m10 129r37 156m10 156r27 158m13 158r30
+. 159r37
+12f4 PredkoscAuta{float} 58r41 58r54 60r30 65m16 67m16 70r40 84r16 102r13
+. 126r16 154r13
+13f4 MasaAuta{float} 58r32 65r85 129r75 159r75
+14f4 PrzyspieszenieZiemskie{float} 129r52 159r52
+15f4 WspoczynnikPodloza{float} 108m13 110m13 131r37 157r37
+16f4 WspoczynnikPodlozaPodstawa{float} 108r35 110r35
+18b4 ABSwlaczony{boolean} 84r39 126r39 133m16 147r13
+25T14 SterownikABS 26l8 26e20 43r30 79r31 144b14 168l8 168t20 173r8
+34T14 Czujnik 35l8 35e15 43r58 79r59 117b14 142l8 142t15 172r9
+42T14 Hamulec 44l8 44e15 76b14 93l8 93t15 171r8
+43Y13 Start 43>20 43>44 79b14 91l11 91t16 177s6
+43t20 ABSo{25T14}
+43t44 Czujniko{34T14}
+48T14 Podloze 49l8 49e15 97b14 115l8 115t15 174r8
+52U14 ObliczaniePredkosci 52b14 72l8 72t27 87s13 163s10
+53f7 EnergiaPoczatkowa{float} 58m7 63r25
+54f7 DrogaPrzebyta{float} 60m13 63r57
+55i7 PredkoscInteger{integer} 70m13 71r22
+56f7 Zmienna{float} 63m13 64r16 65r76
+79t21 ABSo{25T14}
+79t45 CzujnikO{34T14}
+98r7 g{9|47R9} 103r58
+99f7 ZmianaPodloza{float} 104m10 106r38 108r62 110r62
+100f7 RandomFloat{float} 103m10 104r27 107r13
+118f7 AktualnyWspolczynnik{float} 129m13 131r16
+145f7 AktualnyWspolczynnik{float} 157r16 159m13
+171t4 H{42T14} 177r4
+172t4 Cz{34T14} 177r14
+173t4 S{25T14} 177r12
+174t4 P{48T14}
+X 36 s-stausa.ads
 203U14*Initialize 204i<c,__gnat_stack_usage_initialize>22
 268U14*Output_Results 272i<c,__gnat_stack_usage_output_results>22
 
