@@ -3,177 +3,264 @@ M P W=b
 A -gnatA
 A -mtune=generic
 A -march=pentium4
-P ZX
+P SS ZX
 
 RN
-RV NO_ALLOCATORS
-RV NO_CALENDAR
-RV NO_DELAY
-RV NO_DIRECT_BOOLEAN_OPERATORS
-RV NO_EXCEPTION_HANDLERS
-RV NO_EXCEPTIONS
-RV NO_FIXED_POINT
-RV NO_FLOATING_POINT
+RV NO_DISPATCH
+RV NO_DISPATCHING_CALLS
 RV NO_IO
-RV NO_LOCAL_ALLOCATORS
-RV NO_RELATIVE_DELAY
-RV NO_STANDARD_ALLOCATORS_AFTER_ELABORATION
 RV NO_STANDARD_STORAGE_POOLS
-RV NO_TASK_HIERARCHY
-RV NO_TASKING
+RV NO_UNCHECKED_ACCESS
 RV NO_DEFAULT_INITIALIZATION
 RV NO_DYNAMIC_SIZED_OBJECTS
 RV NO_IMPLEMENTATION_ATTRIBUTES
 RV NO_IMPLEMENTATION_PRAGMAS
-RV NO_OBSOLESCENT_FEATURES
 RV SPARK_05
-RV MAX_TASK_ENTRIES=1
-RV MAX_TASKS=1+
 
-U main%b		main.adb		26fe2e38 NE OO SU
+U main%b		main.adb		f1a92be2 NE OO SU
 W ada%s			ada.ads			ada.ali
-W ada.calendar%s	a-calend.adb		a-calend.ali
-W ada.calendar.delays%s	a-caldel.adb		a-caldel.ali
-W ada.numerics%s	a-numeri.ads		a-numeri.ali
-W ada.numerics.elementary_functions%s  a-nuelfu.ads  a-nuelfu.ali
-W ada.numerics.float_random%s  a-nuflra.adb	a-nuflra.ali
-W ada.real_time%s	a-reatim.adb		a-reatim.ali
 W ada.tags%s		a-tags.adb		a-tags.ali
 W ada.text_io%s		a-textio.adb		a-textio.ali
+W glib%s		glib.adb		glib.ali
+W glib.error%s		glib-error.adb		glib-error.ali
+W gtk%s			gtk.ads			gtk.ali
+W gtk.box%s		gtk-box.adb		gtk-box.ali
+W gtk.button%s		gtk-button.adb		gtk-button.ali
+W gtk.label%s		gtk-label.adb		gtk-label.ali
+W gtk.main%s		gtk-main.adb		gtk-main.ali
+W gtk.widget%s		gtk-widget.adb		gtk-widget.ali
+W gtk.window%s		gtk-window.adb		gtk-window.ali
+W gtkada%s		gtkada.ads		gtkada.ali
+W gtkada.builder%s	gtkada-builder.adb	gtkada-builder.ali
+W handlers%s		handlers.adb		handlers.ali
 W system%s		system.ads		system.ali
 W system.concat_2%s	s-conca2.adb		s-conca2.ali
 W system.img_int%s	s-imgint.adb		s-imgint.ali
-W system.parameters%s	s-parame.adb		s-parame.ali
-W system.soft_links%s	s-soflin.adb		s-soflin.ali
-W system.task_info%s	s-tasinf.adb		s-tasinf.ali
-W system.tasking%s	s-taskin.adb		s-taskin.ali
-W system.tasking.rendezvous%s  s-tasren.adb	s-tasren.ali
-W system.tasking.stages%s  s-tassta.adb		s-tassta.ali
+W system.secondary_stack%s  s-secsta.adb	s-secsta.ali
 
 D ada.ads		20170516105950 76789da1 ada%s
-D a-calend.ads		20170516105954 2d5f01d4 ada.calendar%s
-D a-caldel.ads		20170516105948 9f20b83d ada.calendar.delays%s
+D a-charac.ads		20170516105954 2d3ec45b ada.characters%s
+D a-chlat1.ads		20170516105952 66457d31 ada.characters.latin_1%s
+D a-contai.ads		20170516105950 61e5e089 ada.containers%s
+D a-cohata.ads		20170516105956 80a8c839 ada.containers.hash_tables%s
+D a-cohama.ads		20170516105952 8205bf40 ada.containers.hashed_maps%s
+D a-conhel.ads		20170516105950 20298884 ada.containers.helpers%s
 D a-except.ads		20170516105952 291912d5 ada.exceptions%s
 D a-finali.ads		20170516105954 bf4f806b ada.finalization%s
 D a-ioexce.ads		20170516105948 e4a01f64 ada.io_exceptions%s
-D a-numeri.ads		20170516105950 bb51c45a ada.numerics%s
-D a-nuelfu.ads		20170516105950 03e83d1c ada.numerics.elementary_functions%s
-D a-nuflra.ads		20170516105950 4056ab7a ada.numerics.float_random%s
-D a-ngelfu.ads		20170516105954 7e738940 ada.numerics.generic_elementary_functions%s
-D a-reatim.ads		20170516105950 a87e2da7 ada.real_time%s
+D a-iteint.ads		20170516105952 7c7305e9 ada.iterator_interfaces%s
 D a-stream.ads		20170516105952 119b8fb3 ada.streams%s
+D a-string.ads		20170516105952 90ac6797 ada.strings%s
+D a-strmap.ads		20170516105952 e8bb714a ada.strings.maps%s
+D a-strunb.ads		20170516105950 ecdfa332 ada.strings.unbounded%s
+D a-stunha.ads		20170516105952 115e053b ada.strings.unbounded.hash%s
 D a-tags.ads		20170516105954 d3a89129 ada.tags%s
 D a-textio.ads		20170516105954 386df5d4 ada.text_io%s
 D a-unccon.ads		20170516105954 31484697 ada.unchecked_conversion%s
+D a-uncdea.ads		20170516105954 f15a5ed1 ada.unchecked_deallocation%s
+D cairo.ads		20170516115006 b5e79d08 cairo%s
+D cairo-region.ads	20170516115006 b7133728 cairo.region%s
+D gdk.ads		20170516115006 96d821f3 gdk%s
+D gdk-color.ads		20170516115008 ef57bc34 gdk.color%s
+D gdk-device.ads	20170516115014 a8321823 gdk.device%s
+D gdk-display.ads	20170516115012 7ba93c5d gdk.display%s
+D gdk-drag_contexts.ads	20170516115012 1c7e47ec gdk.drag_contexts%s
+D gdk-event.ads		20170516115008 80c8b842 gdk.event%s
+D gdk-frame_clock.ads	20170516115010 a6212c1b gdk.frame_clock%s
+D gdk-frame_timings.ads	20170516115012 154797bb gdk.frame_timings%s
+D gdk-pixbuf.ads	20170516115008 442c0b2a gdk.pixbuf%s
+D gdk-rectangle.ads	20170516115008 7b900608 gdk.rectangle%s
+D gdk-rgba.ads		20170516115012 fd9b7e86 gdk.rgba%s
+D gdk-screen.ads	20170516115012 a1c23acf gdk.screen%s
+D gdk-types.ads		20170516115008 921dc8b2 gdk.types%s
+D gdk-visual.ads	20170516115008 615e934c gdk.visual%s
+D gdk-window.ads	20170516115010 4a0fbd53 gdk.window%s
+D glib.ads		20170516115006 cd2cb2d0 glib%s
+D glib-error.ads	20170516115008 e055fabe glib.error%s
+D glib-g_icon.ads	20170516115012 8e78fa46 glib.g_icon%s
+D glib-generic_properties.ads  20170516115008 f3dc70df glib.generic_properties%s
+D glib-glist.ads	20170516115008 65a6e1be glib.glist%s
+D glib-gslist.ads	20170516115008 953541be glib.gslist%s
+D glib-menu_model.ads	20170516115010 90d2e7eb glib.menu_model%s
+D glib-object.ads	20170516115006 b3bafbeb glib.object%s
+D glib-properties.ads	20170516115008 4118b916 glib.properties%s
+D glib-string.ads	20170516115010 cb1bdf89 glib.string%s
+D glib-types.ads	20170516115008 86ac71ae glib.types%s
+D glib-values.ads	20170516115008 96cf858b glib.values%s
+D glib-variant.ads	20170516115016 2ff778f8 glib.variant%s
+D gnat.ads		20170516105956 fd2ad2f1 gnat%s
+D g-string.ads		20170516105954 c6abc540 gnat.strings%s
+D gtk.ads		20170516115008 cfdeaf1c gtk%s
+D gtk-accel_group.ads	20170516115010 a1d03c32 gtk.accel_group%s
+D gtk-action.ads	20170516115008 09572786 gtk.action%s
+D gtk-actionable.ads	20170516115010 cd9924b6 gtk.actionable%s
+D gtk-activatable.ads	20170516115008 a7cff5a1 gtk.activatable%s
+D gtk-adjustment.ads	20170516115016 bdb04079 gtk.adjustment%s
+D gtk-bin.ads		20170516115016 9af0a291 gtk.bin%s
+D gtk-box.ads		20170516115012 0c3bf366 gtk.box%s
+D gtk-buildable.ads	20170516115012 e451c47e gtk.buildable%s
+D gtk-builder.ads	20170516115012 111a80d7 gtk.builder%s
+D gtk-button.ads	20170516115012 d7a90d48 gtk.button%s
+D gtk-container.ads	20170516115008 a4d13ad6 gtk.container%s
+D gtk-enums.ads		20170516115008 6e531797 gtk.enums%s
+D gtk-label.ads		20170516115012 0ef0611f gtk.label%s
+D gtk-main.ads		20170516115016 77d51aae gtk.main%s
+D gtk-menu.ads		20170516115008 3735720e gtk.menu%s
+D gtk-menu_item.ads	20170516115010 78a2428a gtk.menu_item%s
+D gtk-menu_shell.ads	20170516115012 81760960 gtk.menu_shell%s
+D gtk-misc.ads		20170516115014 cd6a2570 gtk.misc%s
+D gtk-orientable.ads	20170516115016 f3122bc8 gtk.orientable%s
+D gtk-selection_data.ads  20170516115010 f16628bd gtk.selection_data%s
+D gtk-style.ads		20170516115016 e4d1166a gtk.style%s
+D gtk-target_entry.ads	20170516115008 eb3ff3ba gtk.target_entry%s
+D gtk-target_list.ads	20170516115010 04be81da gtk.target_list%s
+D gtk-widget.ads	20170516115012 5c63560f gtk.widget%s
+D gtk-window.ads	20170516115012 66418ad0 gtk.window%s
+D gtkada.ads		20170516115008 57aea1c7 gtkada%s
+D gtkada-builder.ads	20170516115008 833f12b9 gtkada.builder%s
+D gtkada-types.ads	20170516115008 b7bc0c77 gtkada.types%s
+D handlers.ads		20180201200706 021c3ea7 handlers%s
 D interfac.ads		20170516105950 5ab55268 interfaces%s
 D i-c.ads		20170516105948 5421119b interfaces.c%s
 D i-cstrin.ads		20170516105952 341d0ddf interfaces.c.strings%s
 D i-cstrea.ads		20170516105950 e53d8b8e interfaces.c_streams%s
-D main.adb		20180201000702 70724c5e main%b
+D main.adb		20180201211540 32d54c1a main%b
+D pango.ads		20170516115008 707fab73 pango%s
+D pango-attributes.ads	20170516115014 212d0aff pango.attributes%s
+D pango-context.ads	20170516115010 14815998 pango.context%s
+D pango-enums.ads	20170516115012 ed35503b pango.enums%s
+D pango-font.ads	20170516115012 c18b716b pango.font%s
+D pango-font_face.ads	20170516115014 28a4b9ba pango.font_face%s
+D pango-font_family.ads	20170516115008 da06347e pango.font_family%s
+D pango-font_metrics.ads  20170516115016 4b56ab73 pango.font_metrics%s
+D pango-fontset.ads	20170516115012 73840098 pango.fontset%s
+D pango-language.ads	20170516115010 cd0b875e pango.language%s
+D pango-layout.ads	20170516115016 a68b7ace pango.layout%s
+D pango-matrix.ads	20170516115008 365564f3 pango.matrix%s
+D pango-tabs.ads	20170516115008 1e43de1b pango.tabs%s
 D system.ads		20170516105954 32a08138 system%s
-D s-atacco.ads		20170516105954 4c36d12f system.address_to_access_conversions%s
+D s-atocou.ads		20170516105956 b45c2d8d system.atomic_counters%s
 D s-conca2.ads		20170516105952 02a0d7d0 system.concat_2%s
 D s-crtl.ads		20170516105948 0ebbdb71 system.crtl%s
 D s-exctab.ads		20170516105954 54135002 system.exception_table%s
 D s-ficobl.ads		20170516105956 078245e4 system.file_control_block%s
+D s-finmas.ads		20170516105954 7811a767 system.finalization_masters%s
 D s-finroo.ads		20170516105954 4ff27390 system.finalization_root%s
 D s-imgint.ads		20170516105950 02dbe0c2 system.img_int%s
-D s-multip.ads		20170516105948 38ac9f73 system.multiprocessors%s
-D s-osinte.ads		20170516105954 2e5b26a9 system.os_interface%s
 D s-parame.ads		20170516105954 7e2a0d7f system.parameters%s
-D s-rannum.ads		20170516105952 99ade2f2 system.random_numbers%s
+D s-pooglo.ads		20170516105948 ede33ef8 system.pool_global%s
+D s-secsta.ads		20170516105954 9751b57e system.secondary_stack%s
 D s-soflin.ads		20170516105950 14e1eb6c system.soft_links%s
 D s-stache.ads		20170516105954 a37c21ec system.stack_checking%s
-D s-stausa.ads		20170516105954 017a0a05 system.stack_usage%s
 D s-stalib.ads		20170516105954 09bd3940 system.standard_library%s
 D s-stoele.ads		20170516105956 2dc34a04 system.storage_elements%s
-D s-tasinf.ads		20170516105952 601f6b72 system.task_info%s
-D s-taspri.ads		20170516105952 6c1d93d4 system.task_primitives%s
-D s-taprop.ads		20170516105950 1dd2e1b6 system.task_primitives.operations%s
-D s-taskin.ads		20170516105956 05d6152c system.tasking%s
-D s-taprob.ads		20170516105950 acd6094d system.tasking.protected_objects%s
-D s-tpoben.ads		20170516105956 60ad3dae system.tasking.protected_objects.entries%s
-D s-tasren.ads		20170516105950 a67a9949 system.tasking.rendezvous%s
-D s-tassta.ads		20170516105952 5a53a7c6 system.tasking.stages%s
+D s-stoele.adb		20170516105954 ed88f8fb system.storage_elements%b
+D s-stopoo.ads		20170516105950 b16154c2 system.storage_pools%s
+D s-stposu.ads		20170516105948 97a6219c system.storage_pools.subpools%s
+D s-stratt.ads		20170516105948 aedef97e system.stream_attributes%s
+D s-string.ads		20170516105954 8fe54fb7 system.strings%s
 D s-traent.ads		20170516105950 005bf670 system.traceback_entries%s
 D s-unstyp.ads		20170516105952 34867c83 system.unsigned_types%s
 D s-wchcon.ads		20170516105954 1b7d22d2 system.wch_con%s
-D s-win32.ads		20170516105948 b7f96285 system.win32%s
+D unchconv.ads		20170516105948 ca2f9e18 unchecked_conversion%s
 X 1 ada.ads
-16K9*Ada 20e8 20|1r6 2r5 3r6 3r25 4r6 5r6 10r10 39r26 52r22
-X 2 a-calend.ads
-36K13*Calendar 395e17 20|3w10 3r29
-X 7 a-numeri.ads
-16K13*Numerics 32e17 20|4r10 5r10 10r14 39r30 52r26
-X 8 a-nuelfu.ads
-18K22*Elementary_Functions[10|39] 20|4w19 39r39
-X 9 a-nuflra.ads
-41K22*Float_Random 74e30 20|5w19 10r23 52r35
-47R9*Generator<32|63R9> 20|10r36
-49F12*Uniformly_Distributed{float}
-51V13*Random{49F12}<32|71p13> 20|52s48
-X 10 a-ngelfu.ads
-44V13*Sqrt{float} 20|39s60[8|18]
-X 14 a-textio.ads
-49K13*Text_IO 471e16 20|1w10 2r9
-263U14*Put_Line 20|45s7 86s10 91s13 102s7 109s10 116s16 123s10 130s7 136s7
-. 152s10 179s4 187s4
-X 20 main.adb
-8U11*Main 8b11 188l5 188t9
-10r4 Gen{9|47R9} 52r55
-12f4 MasaAuta{float} 32r32 39r79 113r80 144r80
-13f4 PrzyspieszenieZiemskie{float} 113r57 144r57
-14f4 WspoczynnikPodloza{float} 115r57 142r37
-16R9 DaneWspoldzielone 22e14 24r31 158r32 163r32 168r32 173r32
-17a7 Prefix{string} 86r24 91r27 93r38 102r21 109r24 116r30 123r24 130r21
-. 136r21 148r35 152r24
-18b7 CzyHamulecWcisniety{boolean} 88m15 104r21
-19f7 SilaHamowania{float} 87m15 93m70 113r42 141m15 141r37 143m18 143r40
-. 144r42 148m67
-20f7 PredkoscAuta{float} 90r21 93m51 110r21 139r18 148m48
-21b7 ABSwlaczony{boolean} 90r49 110r49 117m21 132r18
-24P9 Dane_Access(16R9) 62r33 71r28 79r28 158r13 163r13 168r13 173r13
-26U14 ObliczaniePredkosci 26b14 26>34 26=53 26=81 46l8 46t27 93s13 148s10
-26a34 Prefix{string} 45r16
-26f53 PredkoscAuta{float} 32r41 32r54 34r24 39m10 41m10 44r34
-26f81 SilaHamowania{float} 37r37
-27f7 EnergiaPoczatkowa{float} 32m7 37r19
-28f7 DrogaPrzebyta{float} 34m7 37r51
-29i7 PredkoscInteger{integer} 44m7 45r25
-30f7 Zmienna{float} 37m7 38r10 39r70
-48V13 LosoweZmianyPodloza{float} 48b13 48>33 57l8 57t27 115s37
-48f33 WspolczynnikOryginalny{float} 56r14
-49f7 RandomFloat{float} 52m7 53m7 53r22 54r24
-50f7 ZmianaPodloza{float} 54m7 56r37
-62T14 SterownikABS 62d27 63l8 63e20 126b14 153l8 153t20 159r11 164r11 169r11
-. 174r11
-62p27 Dane{24P9} 130r16 132r13 136r16 139r13 141r10 141r32 143r13 143r35
-. 144r37 148r30 148r43 148r62 152r19
-71T14 Czujnik 71d22 72l8 72e15 99b14 124l8 124t15 160r12 165r12 170r12 175r12
-71p22 Dane{24P9} 102r16 104r16 109r19 110r16 110r44 113r37 116r25 117r16
-. 123r19
-79T14 Hamulec 79d22 81l8 81e15 83b14 97l8 97t15 161r11 166r11 171r11 176r11
-79p22 Dane{24P9} 86r19 87r10 88r10 90r16 90r44 91r22 93r33 93r46 93r65
-80Y13 Start 85b14 96l11 96t16 181s9 182s9 183s9 184s9
-100f7 AktualnyWspolczynnik{float} 113m13 115r16
-127f7 AktualnyWspolczynnik{float} 142r16 144m13
-158p4 Dane_LP{24P9} 159r24 160r20 161r19
-159t4 S_LP{62T14}
-160t4 Cz_LP{71T14}
-161t4 H_LP{79T14} 181r4
-163p4 Dane_PP{24P9} 164r24 165r20 166r19
-164t4 S_PP{62T14}
-165t4 Cz_PP{71T14}
-166t4 H_PP{79T14} 182r4
-168p4 Dane_LT{24P9} 169r24 170r20 171r19
-169t4 S_LT{62T14}
-170t4 Cz_LT{71T14}
-171t4 H_LT{79T14} 183r4
-173p4 Dane_PT{24P9} 174r24 175r20 176r19
-174t4 S_PT{62T14}
-175t4 Cz_PT{71T14}
-176t4 H_PT{79T14} 184r4
-X 35 s-stausa.ads
-203U14*Initialize 204i<c,__gnat_stack_usage_initialize>22
-268U14*Output_Results 272i<c,__gnat_stack_usage_output_results>22
+16K9*Ada 20e8 87|9r6 9r26
+X 11 a-iteint.ads
+24h9 Forward_Iterator
+X 18 a-textio.ads
+49K13*Text_IO 471e16 87|9w10 9r30
+263U14*Put_Line 87|31s10 38s7 56s4
+X 23 gdk.ads
+43P9*Gdk_Window<38|154P9>
+46P9*Gdk_Visual<38|154P9>
+X 25 gdk-device.ads
+50P9*Gdk_Device(49R9)
+60V13*Convert{101|67M9} 42|58i21
+61V13*Convert{50P9} 42|59i21
+X 36 gdk-visual.ads
+78V13*Convert[125|20]{101|67M9} 42|58i21
+79V13*Convert[125|20]{23|46P9} 42|59i21
+X 37 gdk-window.ads
+281V13*Convert{101|67M9} 42|58i21
+282V13*Convert{23|43P9} 42|59i21
+X 38 glib.ads
+38K9*Glib 430e9 87|7r6 7r26 10w6 10r16 24r26 27r25
+57M9*Guint<84|43M9> 87|23r18 27r30
+81A12*UTF8_String{string}<integer>
+154P9*C_Proxy(151R9)
+X 39 glib-error.ads
+33K14*Error 68e15 87|7w11 7r31 24r31
+36P9*GError<38|154P9> 87|24r37
+44U14*Error_Free 87|57s4
+60V13*Get_Message{string} 87|56s27
+X 45 glib-object.ads
+41P9*GObject(40R9)
+673V13*Convert{101|67M9} 42|58i21 43|49i21
+674V13*Convert{41P9} 42|59i21 43|50i21
+X 53 gtk.ads
+41K9*Gtk 79e8 87|1r6 1r27 2r6 2r27 3r6 3r27 4r6 5r6 5r27 6w6 6r26 12r6 12r22
+. 47r4 80r1 83r4
+X 60 gtk-box.ads
+88K13*Box 402e12 87|1w10 1r31
+91P9*Gtk_Box(90R9)
+97P12*Gtk_Vbox{91P9} 87|21r12
+X 62 gtk-builder.ads
+340V13*Add_From_File{38|57M9} 87|51R16
+341p8 Builder(80|82R9) 87|51r31
+342a8 Filename{38|81A12} 87|52r31
+343p8 Error(39|36P9) 87|53r31
+494V13*Get_Object{45|41P9} 87|70R34 81R32
+X 63 gtk-button.ads
+54K13*Button 596e15 87|12w10 12r26
+56R9*Gtk_Button_Record<59|46R9> 56e65 87|29r39
+57P9*Gtk_Button(56R9) 87|25r13 70r14
+283U14*Set_Label 87|72R11 88R14
+472U14*On_Clicked 87|71R11
+X 65 gtk-enums.ads
+866V13*Convert{101|67M9} 42|58i21 43|49i21
+867V13*Convert{string} 42|59i21 43|50i21
+X 66 gtk-label.ads
+181K13*Label 907e14 87|2w10 2r31
+184P9*Gtk_Label(183R9) 87|20r12
+X 67 gtk-main.ads
+33K13*Main 327e13 87|4w10 47r8 83r8
+62U14*Init 87|47s13
+197U14*Main 87|83s13
+X 77 gtk-widget.ads
+342K13*Widget 5432e15 87|3w10 3r31 80r5
+345P9*Gtk_Widget(344R9) 87|81r5
+432V13*Convert{101|67M9} 42|58i21 43|49i21
+433V13*Convert{345P9} 42|59i21 43|50i21
+2971U14*Show_All 87|80R12
+X 78 gtk-window.ads
+72K13*Window 1677e15 87|5w10 5r31
+75P9*Gtk_Window(74R9) 87|19r12
+X 79 gtkada.ads
+30K9*Gtkada 34e11 87|8r6 8r26 81r17
+X 80 gtkada-builder.ads
+80K16*Builder 173e19 87|8w13 8r33 81r24
+84P9*Gtkada_Builder(82R9) 87|22r20
+86U14*Gtk_New 87|48s1
+90U14*Do_Connect 87|65s1
+X 82 handlers.ads
+5K9*Handlers 8e15 87|11w6
+X 84 i-c.ads
+43M9*unsigned
+X 87 main.adb
+16U11*Main 16b11 94l5 94t9
+19p4 Win{78|75P9}
+20p4 Label{66|184P9}
+21p4 Box{60|97P12}
+22p4 Builder{80|84P9} 48m10 48r10 51r43 65r13 70r26 81r44
+23m4 Return_Code{38|57M9} 51m1
+24p4 Error{39|36P9} 53m43 53r43 55r4 56r40 57r16
+25p4 Button{63|57P9} 70m4 71r4 72r4 88r7
+27m1 Migration_Interval{38|57M9}
+29U14 BrakeOn 29b14 29^23 33l8 33t15 71r23
+29p23 Button(63|56R9)
+35V14 Migrate{boolean} 35b14 35>23 40l8 40t15
+35i23 Number_To_Move{integer} 38r24
+85l4 Endless_Loop 90l13 90e25
+X 101 system.ads
+67M9*Address
 
