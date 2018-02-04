@@ -1,3 +1,0 @@
-main.adb:19:04: warning: variable "Win" is never read and never assigned
-main.adb:20:04: warning: variable "Label" is never read and never assigned
-main.adb:21:04: warning: variable "Box" is never read and never assigned

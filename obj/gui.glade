@@ -2,13 +2,7 @@
 <!-- Generated with glade 3.16.1 -->
 <interface>
   <requires lib="gtk+" version="3.12"/>
-  <object class="GtkTextBuffer" id="textbuffer1">
-    <property name="text" translatable="yes">elo gitarra siema xd
-hamulec hamuje
-gaz gazuje
-a ja sie zle czuje 
-konsola elo</property>
-  </object>
+  <object class="GtkTextBuffer" id="console_buffer"/>
   <object class="GtkWindow" id="monitorWindow">
     <property name="width_request">400</property>
     <property name="can_focus">False</property>
@@ -51,7 +45,7 @@ konsola elo</property>
                             <property name="can_focus">False</property>
                             <property name="orientation">vertical</property>
                             <child>
-                              <object class="GtkLabel" id="label5">
+                              <object class="GtkLabel" id="lp_1">
                                 <property name="visible">True</property>
                                 <property name="can_focus">False</property>
                                 <property name="label" translatable="yes">label</property>
@@ -63,7 +57,7 @@ konsola elo</property>
                               </packing>
                             </child>
                             <child>
-                              <object class="GtkLabel" id="label6">
+                              <object class="GtkLabel" id="lp_2">
                                 <property name="visible">True</property>
                                 <property name="can_focus">False</property>
                                 <property name="label" translatable="yes">label</property>
@@ -75,7 +69,7 @@ konsola elo</property>
                               </packing>
                             </child>
                             <child>
-                              <object class="GtkLabel" id="label7">
+                              <object class="GtkLabel" id="lp_3">
                                 <property name="visible">True</property>
                                 <property name="can_focus">False</property>
                                 <property name="label" translatable="yes">label</property>
@@ -87,7 +81,7 @@ konsola elo</property>
                               </packing>
                             </child>
                             <child>
-                              <object class="GtkLabel" id="label8">
+                              <object class="GtkLabel" id="lp_4">
                                 <property name="visible">True</property>
                                 <property name="can_focus">False</property>
                                 <property name="label" translatable="yes">label</property>
@@ -136,7 +130,7 @@ konsola elo</property>
                             <property name="can_focus">False</property>
                             <property name="orientation">vertical</property>
                             <child>
-                              <object class="GtkLabel" id="label9">
+                              <object class="GtkLabel" id="pp_1">
                                 <property name="visible">True</property>
                                 <property name="can_focus">False</property>
                                 <property name="label" translatable="yes">label</property>
@@ -148,7 +142,7 @@ konsola elo</property>
                               </packing>
                             </child>
                             <child>
-                              <object class="GtkLabel" id="label10">
+                              <object class="GtkLabel" id="pp_2">
                                 <property name="visible">True</property>
                                 <property name="can_focus">False</property>
                                 <property name="label" translatable="yes">label</property>
@@ -160,7 +154,7 @@ konsola elo</property>
                               </packing>
                             </child>
                             <child>
-                              <object class="GtkLabel" id="label11">
+                              <object class="GtkLabel" id="pp_3">
                                 <property name="visible">True</property>
                                 <property name="can_focus">False</property>
                                 <property name="label" translatable="yes">label</property>
@@ -172,7 +166,7 @@ konsola elo</property>
                               </packing>
                             </child>
                             <child>
-                              <object class="GtkLabel" id="label12">
+                              <object class="GtkLabel" id="pp_4">
                                 <property name="visible">True</property>
                                 <property name="can_focus">False</property>
                                 <property name="label" translatable="yes">label</property>
@@ -219,7 +213,7 @@ konsola elo</property>
                             <property name="can_focus">False</property>
                             <property name="orientation">vertical</property>
                             <child>
-                              <object class="GtkLabel" id="label14">
+                              <object class="GtkLabel" id="lt_1">
                                 <property name="visible">True</property>
                                 <property name="can_focus">False</property>
                                 <property name="label" translatable="yes">label</property>
@@ -231,7 +225,7 @@ konsola elo</property>
                               </packing>
                             </child>
                             <child>
-                              <object class="GtkLabel" id="label15">
+                              <object class="GtkLabel" id="lt_2">
                                 <property name="visible">True</property>
                                 <property name="can_focus">False</property>
                                 <property name="label" translatable="yes">label</property>
@@ -243,7 +237,7 @@ konsola elo</property>
                               </packing>
                             </child>
                             <child>
-                              <object class="GtkLabel" id="label16">
+                              <object class="GtkLabel" id="lt_3">
                                 <property name="visible">True</property>
                                 <property name="can_focus">False</property>
                                 <property name="label" translatable="yes">label</property>
@@ -255,7 +249,7 @@ konsola elo</property>
                               </packing>
                             </child>
                             <child>
-                              <object class="GtkLabel" id="label17">
+                              <object class="GtkLabel" id="lt_4">
                                 <property name="visible">True</property>
                                 <property name="can_focus">False</property>
                                 <property name="label" translatable="yes">label</property>
@@ -302,7 +296,7 @@ konsola elo</property>
                             <property name="can_focus">False</property>
                             <property name="orientation">vertical</property>
                             <child>
-                              <object class="GtkLabel" id="label18">
+                              <object class="GtkLabel" id="pt_1">
                                 <property name="visible">True</property>
                                 <property name="can_focus">False</property>
                                 <property name="label" translatable="yes">label</property>
@@ -314,7 +308,7 @@ konsola elo</property>
                               </packing>
                             </child>
                             <child>
-                              <object class="GtkLabel" id="label19">
+                              <object class="GtkLabel" id="pt_2">
                                 <property name="visible">True</property>
                                 <property name="can_focus">False</property>
                                 <property name="label" translatable="yes">label</property>
@@ -326,7 +320,7 @@ konsola elo</property>
                               </packing>
                             </child>
                             <child>
-                              <object class="GtkLabel" id="label20">
+                              <object class="GtkLabel" id="pt_3">
                                 <property name="visible">True</property>
                                 <property name="can_focus">False</property>
                                 <property name="label" translatable="yes">label</property>
@@ -338,7 +332,7 @@ konsola elo</property>
                               </packing>
                             </child>
                             <child>
-                              <object class="GtkLabel" id="label21">
+                              <object class="GtkLabel" id="pt_4">
                                 <property name="visible">True</property>
                                 <property name="can_focus">False</property>
                                 <property name="label" translatable="yes">label</property>
@@ -376,10 +370,10 @@ konsola elo</property>
               </packing>
             </child>
             <child>
-              <object class="GtkTextView" id="textview1">
+              <object class="GtkTextView" id="console">
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
-                <property name="buffer">textbuffer1</property>
+                <property name="buffer">console_buffer</property>
               </object>
               <packing>
                 <property name="expand">False</property>
@@ -400,8 +394,9 @@ konsola elo</property>
             <property name="orientation">vertical</property>
             <child>
               <object class="GtkButton" id="brakeOn">
-                <property name="label" translatable="yes">button</property>
+                <property name="label" translatable="yes">wł. ham.</property>
                 <property name="visible">True</property>
+                <property name="sensitive">False</property>
                 <property name="can_focus">True</property>
                 <property name="receives_default">True</property>
               </object>
@@ -413,10 +408,12 @@ konsola elo</property>
             </child>
             <child>
               <object class="GtkButton" id="brakeOff">
-                <property name="label" translatable="yes">button</property>
+                <property name="label" translatable="yes">wył. ham.</property>
                 <property name="visible">True</property>
+                <property name="sensitive">False</property>
                 <property name="can_focus">True</property>
                 <property name="receives_default">True</property>
+                <property name="relief">none</property>
               </object>
               <packing>
                 <property name="expand">False</property>
@@ -425,9 +422,10 @@ konsola elo</property>
               </packing>
             </child>
             <child>
-              <object class="GtkButton" id="button3">
-                <property name="label" translatable="yes">button</property>
+              <object class="GtkButton" id="accelOn">
+                <property name="label" translatable="yes">wł. gaz</property>
                 <property name="visible">True</property>
+                <property name="sensitive">False</property>
                 <property name="can_focus">True</property>
                 <property name="receives_default">True</property>
               </object>
@@ -436,6 +434,36 @@ konsola elo</property>
                 <property name="fill">True</property>
                 <property name="position">2</property>
               </packing>
+            </child>
+            <child>
+              <object class="GtkButton" id="accelOff">
+                <property name="label" translatable="yes">wył. gaz</property>
+                <property name="visible">True</property>
+                <property name="sensitive">False</property>
+                <property name="can_focus">True</property>
+                <property name="receives_default">True</property>
+              </object>
+              <packing>
+                <property name="expand">False</property>
+                <property name="fill">True</property>
+                <property name="position">3</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkButton" id="start">
+                <property name="label" translatable="yes">start</property>
+                <property name="visible">True</property>
+                <property name="can_focus">True</property>
+                <property name="receives_default">True</property>
+              </object>
+              <packing>
+                <property name="expand">False</property>
+                <property name="fill">True</property>
+                <property name="position">4</property>
+              </packing>
+            </child>
+            <child>
+              <placeholder/>
             </child>
           </object>
           <packing>
