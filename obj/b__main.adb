@@ -298,10 +298,10 @@ package body ada_main is
    end;
 
 --  BEGIN Object file/option list
-   --   C:\Users\arek\pwir\pwir\obj\main.o
-   --   -LC:\Users\arek\pwir\pwir\obj\
-   --   -LC:\Users\arek\pwir\pwir\obj\
-   --   -LC:/bin/gnat17/lib/gcc/i686-pc-mingw32/6.3.1/adalib/
+   --   C:\Users\Admin\Documents\Studia\5 semestr\pwir\projekt\2\obj\main.o
+   --   -LC:\Users\Admin\Documents\Studia\5 semestr\pwir\projekt\2\obj\
+   --   -LC:\Users\Admin\Documents\Studia\5 semestr\pwir\projekt\2\obj\
+   --   -LC:/gnat/2017/lib/gcc/i686-pc-mingw32/6.3.1/adalib/
    --   -static
    --   -lgnarl
    --   -lgnat
