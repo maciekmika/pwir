@@ -1,0 +1,1 @@
+main.adb:371:04: warning: variable "Console_Buffer" is never read and never assigned

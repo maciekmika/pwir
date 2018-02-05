@@ -15,20 +15,20 @@ RV NO_IMPLEMENTATION_PRAGMAS
 RV NO_OBSOLESCENT_FEATURES
 RV SPARK_05
 
-U ada_main%b		b__main.adb		cbb3e45e NE OO PK IL
+U ada_main%b		b__main.adb		f46f7e4f NE OO PK IL
 W ada%s			ada.ads			ada.ali
 W ada.exceptions%s	a-except.adb		a-except.ali
 W system%s		system.ads		system.ali
 W system.restrictions%s	s-restri.adb		s-restri.ali
 
-U ada_main%s		b__main.ads		5a26e6d1 EE NE OO PK IL
+U ada_main%s		b__main.ads		cb7d5712 EE NE OO PK IL
 W system%s		system.ads		system.ali
 
 D ada.ads		20170516105950 76789da1 ada%s
 D a-except.ads		20170516105952 291912d5 ada.exceptions%s
 D a-unccon.ads		20170516105954 31484697 ada.unchecked_conversion%s
-D b__main.ads		20180204214712 688667e9 ada_main%s
-D b__main.adb		20180204214712 91b19710 ada_main%b
+D b__main.ads		20180205112808 f9ddd62a ada_main%s
+D b__main.adb		20180205112808 3f36bcc2 ada_main%b
 D system.ads		20170516105954 32a08138 system%s
 D s-parame.ads		20170516105954 7e2a0d7f system.parameters%s
 D s-restri.ads		20170516105952 1b9d0672 system.restrictions%s
@@ -40,7 +40,7 @@ X 1 ada.ads
 X 2 a-except.ads
 54K13*Exceptions 349e19 5|8w10
 X 4 b__main.ads
-4K9*ada_main 1470l5 1470e13 5|10b14 1256l5 1256t13
+4K9*ada_main 1485l5 1485e13 5|10b14 1256l5 1256t13
 6i4*gnat_argc{integer} 10m22 10r22 5|1225m7
 7m4*gnat_argv{6|67M9} 11m22 11r22 5|1226m7
 8m4*gnat_envp{6|67M9} 12m22 12r22 5|1227m7
@@ -96,7 +96,7 @@ X 4 b__main.ads
 . 920r22 922r22 924r22 926r22 928r22 930r22 932r22 934r22 936r22 938r22 940r22
 . 942r22 944r22 946r22 948r22 950r22 952r22 954r22 956r22 958r22 960r22 962r22
 . 964r22 966r22 968r22 970r22 972r22 974r22 976r22 978r22 980r22 982r22 984r22
-. 986r22 988r22
+. 986r22 988r22 990r22 992r22 994r22 996r22 998r22
 38m4*u00001{37M9} 39r22
 40m4*u00002{37M9} 41r22
 42m4*u00003{37M9} 43r22
@@ -573,6 +573,11 @@ X 4 b__main.ads
 984m4*u00474{37M9} 985r22
 986m4*u00475{37M9} 987r22
 988m4*u00476{37M9} 989r22
+990m4*u00477{37M9} 991r22
+992m4*u00478{37M9} 993r22
+994m4*u00479{37M9} 995r22
+996m4*u00480{37M9} 997r22
+998m4*u00481{37M9} 999r22
 X 5 b__main.adb
 12i4 E070{short_integer} 12m46 12r46 868m7 868r15
 13i4 E013{short_integer} 13m46 13r46 865m7 865r15
@@ -610,11 +615,11 @@ X 5 b__main.adb
 45i4 E413{short_integer} 45m46 45r46 926m7 926r15
 46i4 E178{short_integer} 46m46 46r46 683m7 683r15 928m7 928r15
 47i4 E120{short_integer} 47m46 47r46 930m7 930r15
-48i4 E456{short_integer} 48m46 48r46 932m7 932r15
-49i4 E464{short_integer} 49m46 49r46 934m7 934r15
-50i4 E466{short_integer} 50m46 50r46 676m7 676r15 936m7 936r15
-51i4 E470{short_integer} 51m46 51r46 938m7 938r15
-52i4 E476{short_integer} 52m46 52r46 940m7 940r15
+48i4 E461{short_integer} 48m46 48r46 932m7 932r15
+49i4 E469{short_integer} 49m46 49r46 934m7 934r15
+50i4 E471{short_integer} 50m46 50r46 676m7 676r15 936m7 936r15
+51i4 E475{short_integer} 51m46 51r46 938m7 938r15
+52i4 E481{short_integer} 52m46 52r46 940m7 940r15
 53i4 E170{short_integer} 53m46 53r46 669m7 669r15 942m7 942r15
 54i4 E201{short_integer} 54m46 54r46 944m7 944r15
 55i4 E266{short_integer} 55m46 55r46 662m7 662r15 947m7 947r15

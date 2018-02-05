@@ -20,91 +20,6 @@ with ada.numerics.float_random;
 
 procedure Main is
 
-   -- #############################
-   -- ########### GUI #############
-   package Button_Timeout is new Glib.Main.Generic_Sources (Gtk_Button);
-
-   Builder       : Gtkada_Builder;
-   Return_Code : Guint;
-   Error       : aliased Glib.Error.GError;
-   Start_Btn, Brake_On_Btn, Brake_Off_Btn, Accel_On_Btn, Accel_Off_Btn : Gtk_Button;
-   Console_Buffer : Gtk_Text_Buffer;
-   Timeout : G_Source_Id;
-   Count   : Integer := 0;
-
-   type DataWindow is record
-      l1 : Gtk_Label;
-      l2 : Gtk_Label;
-      l3 : Gtk_Label;
-      l4 : Gtk_Label;
-   end record;
-
-   lpdata, ppdata, ltdata, ptdata : DataWindow;
-
-   -- zmiana danych w GUI
-   function Update_Gui (Button : Gtk_Button) return Boolean is
-   begin
-      Count := Count + 1;
-      Button.Set_Label(Count'Img);
-      lpdata.l1.Set_Label(Count'Img);
-      lpdata.l2.Set_Label(Count'Img);
-      lpdata.l3.Set_Label(Count'Img);
-      lpdata.l4.Set_Label(Count'Img);
-
-
-     -- Set_Text (Label, "count:" & Integer'Image (Count));
-      Put_Line(Count'Img);
-      return True;
-   end Update_Gui;
-
-   -- start timera ktory aktualizuje gui co 100ms
-   procedure Timeout_Start (Button : access Gtk_Button_Record'Class) is
-   begin
-      Put_Line("GUI started");
-      Start_Btn.Set_Sensitive(False);
-      Accel_On_Btn.Set_Sensitive(True);
-      Brake_On_Btn.Set_Sensitive(True);
-      Timeout := Button_Timeout.Timeout_Add(Interval => 100,Func => Update_Gui'Access, Data => Button);
-   end Timeout_Start;
-
-   -- wl. hamulca
-   procedure Brake_On (Button : access Gtk_Button_Record'Class) is
-   begin
-      Brake_On_Btn.Set_Sensitive(False);
-      Brake_Off_Btn.Set_Sensitive(True);
-      Accel_On_Btn.Set_Sensitive(False);
-      Put_Line("hamulec wlaczony");
-
-   end Brake_On;
-
-   -- wyl. hamulca
-   procedure Brake_Off (Button : access Gtk_Button_Record'Class) is
-   begin
-      Brake_On_Btn.Set_Sensitive(True);
-      Brake_Off_Btn.Set_Sensitive(False);
-      Accel_On_Btn.Set_Sensitive(True);
-
-      Put_Line("hamulec wylaczony");
-   end Brake_Off;
-
-   -- wl. gazu
-   procedure Accel_On (Button : access Gtk_Button_Record'Class) is
-   begin
-      Accel_On_Btn.Set_Sensitive(False);
-      Brake_On_Btn.Set_Sensitive(False);
-      Accel_Off_Btn.Set_Sensitive(True);
-      Put_Line("gaz wlaczony");
-   end Accel_On;
-
-   -- wyl. gazu
-   procedure Accel_Off (Button : access Gtk_Button_Record'Class) is
-   begin
-      Accel_On_Btn.Set_Sensitive(True);
-      Brake_On_Btn.Set_Sensitive(True);
-      Accel_Off_Btn.Set_Sensitive(False);
-      Put_Line("gaz wylaczony");
-   end Accel_Off;
-
 
 
    -- #############################
@@ -118,43 +33,44 @@ procedure Main is
 
    type DaneWspoldzielone is record
       Prefix: String(1 .. 9);
-      CzyHamulecWcisniety : Boolean;
-      SilaHamowania : Float;
-      PredkoscAuta : Float;
-      ABSwlaczony: Boolean;
+      CzyHamulecWcisniety : Boolean with Atomic;
+      SilaHamowania : Float with Atomic;
+      PredkoscAuta : Float with Atomic;
+      ABSwlaczony: Boolean with Atomic;
+      KoloZablokowane: Boolean with Atomic;
+      KoloZablokowaneFlaga: Boolean with Atomic;
    end record;
 
    type DaneWspoldzielone2 is record
       Prefix: String(1 .. 9);
-      CzyGazWcisniety : Boolean;
-      SilaGazu : Float;
-      PredkoscAuta : Float;
-      ASRwlaczony: Boolean;
+      CzyGazWcisniety : Boolean with Atomic;
+      SilaGazu : Float with Atomic;
+      PredkoscAuta : Float with Atomic;
+      ASRwlaczony: Boolean with Atomic;
+      Poslizg: Boolean with Atomic;
+      PoslizgFlaga: Boolean with Atomic;
    end record;
 
    type Dane_Access is access DaneWspoldzielone;
    type Dane_Access2 is access DaneWspoldzielone2;
 
-   procedure ObliczaniePredkosci(Prefix: in String; PredkoscAuta: in out Float; SilaHamowania: in out Float; KolaZablokowane: in Boolean) is
+   procedure ObliczaniePredkosci(Prefix: in String; PredkoscAuta: in out Float; SilaHamowania: in out Float) is
       EnergiaPoczatkowa : Float :=0.0;
       DrogaPrzebyta : Float;
       PredkoscInteger : Integer;
       Zmienna : Float;
    begin
-      if KolaZablokowane = False then
-         EnergiaPoczatkowa := 0.5*MasaAuta*PredkoscAuta*PredkoscAuta;
-         -- obliczamy droge przebyta przez 1/10 sekundy sekunde
-         DrogaPrzebyta := PredkoscAuta/10.0;
-         -- obliczamy predkosc po 1/10 sekundy dzialania sily hamowania
+      EnergiaPoczatkowa := 0.5*MasaAuta*PredkoscAuta*PredkoscAuta;
+      -- obliczamy droge przebyta przez 1/10 sekundy sekunde
+      DrogaPrzebyta := PredkoscAuta/10.0;
+      -- obliczamy predkosc po 1/10 sekundy dzialania sily hamowania
 
-         Zmienna :=  EnergiaPoczatkowa-SilaHamowania*DrogaPrzebyta;
-         if Zmienna >= 0.0 then
-            PredkoscAuta := Ada.Numerics.Elementary_Functions.Sqrt(2.0*(Zmienna)/MasaAuta); -- to powinno byc w pierwiastku
-         else
-            PredkoscAuta := 0.0;
-         end if;
+      Zmienna :=  EnergiaPoczatkowa-SilaHamowania*DrogaPrzebyta;
+      if Zmienna >= 0.0 then
+         PredkoscAuta := Ada.Numerics.Elementary_Functions.Sqrt(2.0*(Zmienna)/MasaAuta); -- to powinno byc w pierwiastku
+      else
+         PredkoscAuta := 0.0;
       end if;
-
 
       PredkoscInteger := Integer(PredkoscAuta);
       Put_Line(Prefix & PredkoscInteger'Img);
@@ -186,10 +102,21 @@ procedure Main is
    begin
       RandomFloat := Ada.Numerics.Float_Random.Random(Gen);
       RandomFloat := RandomFloat - 0.5;
-      ZmianaPodloza := RandomFloat/100.0;
+      ZmianaPodloza := RandomFloat/10.0;
       --Put_Line("Zmiana podloza" & ZmianaPodloza'Img);
       return WspolczynnikOryginalny+ZmianaPodloza;
    end LosoweZmianyPodloza;
+
+   function LosoweZmianySily(Sila: in Float) return Float is
+      RandomFloat: Float;
+      ZmianaSily: Float;
+   begin
+      RandomFloat := Ada.Numerics.Float_Random.Random(Gen);
+      RandomFloat := RandomFloat - 0.5;
+      ZmianaSily := RandomFloat*10.0;
+      --Put_Line("Zmiana podloza" & ZmianaPodloza'Img);
+      return Sila+ZmianaSily;
+   end LosoweZmianySily;
 
    -- zmniejsza/zwieksza sile hamowania
    -- na podstawie sygnalow z czujnika
@@ -235,7 +162,7 @@ procedure Main is
          while Dane.PredkoscAuta > 0.0 and Dane.ABSwlaczony = False loop
             Put_Line(Dane.Prefix & "hamowanie, ABS nieaktywny");
             --obliczamy energie poczatkowa
-            ObliczaniePredkosci(Dane.Prefix, Dane.PredkoscAuta, Dane.SilaHamowania,False);
+            ObliczaniePredkosci(Dane.Prefix, Dane.PredkoscAuta, Dane.SilaHamowania);
             delay 0.1;
          end loop;
       end Start;
@@ -303,7 +230,7 @@ procedure Main is
             AktualnyWspolczynnik := Dane.SilaGazu/(PrzyspieszenieZiemskie*MasaAuta);
             -- if aktualny_wsp>podloze_wsp => kola zablokowane
             if AktualnyWspolczynnik>LosoweZmianyPodloza(WspoczynnikPodloza) then
-               Put_Line(Dane.Prefix & "kolo zablokowane");
+               Put_Line(Dane.Prefix & "poslizg, aktywacja ASR");
                Dane.ASRwlaczony := True;
             end if;
             -- wlacz asr
@@ -319,6 +246,8 @@ procedure Main is
       AktualnyWspolczynnik : Float := 0.8;
    begin
 
+      Dane.KoloZablokowane := False;
+
       Put_Line(Dane.Prefix & "sterownik zainicjalizowany");
 
       while Dane.ABSwlaczony = false loop
@@ -330,22 +259,33 @@ procedure Main is
       --dopoki predkosc nie jest zero
       while Dane.PredkoscAuta > 0.0 loop
          -- dobieramy odpowiednia sile
+         Dane.SilaHamowania := Dane.SilaHamowania+LosoweZmianySily(100.0);
+         AktualnyWspolczynnik := Dane.SilaHamowania/(PrzyspieszenieZiemskie*MasaAuta);
 
-         Dane.SilaHamowania := Dane.SilaHamowania+100.0;
          while AktualnyWspolczynnik>WspoczynnikPodloza loop
-            Put_Line(Dane.Prefix & " kolo zablokowane!");
-            Dane.SilaHamowania := Dane.SilaHamowania-100.0;
+            if Dane.KoloZablokowane = False then
+               Put_Line(Dane.Prefix & "kolo zablokowane, zmniejszanie sily hamowania, aktualna sila hamowania:" & Dane.SilaHamowania'Img);
+            end if;
+            Dane.KoloZablokowane := True;
+            Dane.KoloZablokowaneFlaga := True;
+
+            Dane.SilaHamowania := Dane.SilaHamowania-LosoweZmianySily(500.0);
             AktualnyWspolczynnik := Dane.SilaHamowania/(PrzyspieszenieZiemskie*MasaAuta);
             --Put_Line("in");
+            --Put_Line(Dane.KoloZablokowane'Img);
          end loop;
 
-         if AktualnyWspolczynnik<WspoczynnikPodloza then
-            Dane.SilaHamowania := Dane.SilaHamowania + 100.0;
-            Put_Line("Zwiekszanie sily hamowania");
+          ObliczaniePredkosci(Dane.Prefix, Dane.PredkoscAuta, Dane.SilaHamowania);
+
+         if AktualnyWspolczynnik<=WspoczynnikPodloza then
+            if Dane.KoloZablokowane = True then
+               Put_Line(Dane.Prefix & "kolo odblokowane, aktualna sila hamowania:" & Dane.SilaHamowania'Img);
+            end if;
+
+            Dane.KoloZablokowane := False;
          end if;
 
-
-         ObliczaniePredkosci(Dane.Prefix, Dane.PredkoscAuta, Dane.SilaHamowania, AktualnyWspolczynnik>WspoczynnikPodloza);
+         ObliczaniePredkosci(Dane.Prefix, Dane.PredkoscAuta, Dane.SilaHamowania);
          delay 0.1;
 
       end loop;
@@ -368,12 +308,30 @@ procedure Main is
       --dopoki predkosc nie jest zero
       while Dane.PredkoscAuta < 25.0 loop
          -- dobieramy odpowiednia sile
-         Dane.SilaGazu := Dane.SilaGazu+200.0;
+         Dane.SilaGazu := Dane.SilaGazu+LosoweZmianySily(100.0);
+         AktualnyWspolczynnik := Dane.SilaGazu/(PrzyspieszenieZiemskie*MasaAuta);
          while AktualnyWspolczynnik>WspoczynnikPodloza loop
-            Dane.SilaGazu := Dane.SilaGazu-100.0;
+            if Dane.Poslizg = False then
+               Put_Line(Dane.Prefix & "poslizg, zmniejszanie gazu, aktualna sila gazu:" & Dane.SilaGazu'Img);
+            end if;
+            Dane.Poslizg := True;
+            Dane.PoslizgFlaga := True;
+
+
+            Dane.SilaGazu := Dane.SilaGazu-LosoweZmianySily(400.0);
             AktualnyWspolczynnik := Dane.SilaGazu/(PrzyspieszenieZiemskie*MasaAuta);
             --Put_Line("in");
          end loop;
+
+         ObliczaniePredkosciGaz(Dane.Prefix, Dane.PredkoscAuta, Dane.SilaGazu);
+
+         if AktualnyWspolczynnik<=WspoczynnikPodloza then
+            if Dane.Poslizg = True then
+               Put_Line(Dane.Prefix & "koniec poslizgu, aktualna sila gazu:" & Dane.SilaGazu'Img);
+            end if;
+
+            Dane.Poslizg := False;
+         end if;
 
          ObliczaniePredkosciGaz(Dane.Prefix, Dane.PredkoscAuta, Dane.SilaGazu);
          delay 0.1;
@@ -384,46 +342,143 @@ procedure Main is
 
 
    --LP - lewy przód PP - prawy przód LT PT
-   Dane_LP: Dane_Access := new DaneWspoldzielone'(ASCII.ESC & "[30m" & "LP: ",False,0.0,50.0,False);
+   Dane_LP: Dane_Access := new DaneWspoldzielone'(ASCII.ESC & "[30m" & "LP: ",False,0.0,70.0,False,False,False);
    S_LP : SterownikABS(Dane_LP);
    Cz_LP : Czujnik(Dane_LP);
    H_LP : Hamulec(Dane_LP);
 
-   Dane_PP: Dane_Access := new DaneWspoldzielone'(ASCII.ESC & "[31m" & "PP: ",False,0.0,50.0,False);
-   S_PP : SterownikABS(Dane_PP);
-   Cz_PP : Czujnik(Dane_PP);
-   H_PP : Hamulec(Dane_PP);
-
-   Dane_LT: Dane_Access := new DaneWspoldzielone'(ASCII.ESC & "[32m" & "LT: ",False,0.0,50.0,False);
-   S_LT : SterownikABS(Dane_LT);
-   Cz_LT : Czujnik(Dane_LT);
-   H_LT : Hamulec(Dane_LT);
-
-   Dane_PT: Dane_Access := new DaneWspoldzielone'(ASCII.ESC & "[34m" & "PT: ",False,0.0,50.0,False);
-   S_PT : SterownikABS(Dane_PT);
-   Cz_PT : Czujnik(Dane_PT);
-   H_PT : Hamulec(Dane_PT);
 
 
-   Dane_LP2: Dane_Access2 := new DaneWspoldzielone2'(ASCII.ESC & "[30m" & "LP: ",False,0.0,0.1,False);
+   Dane_LP2: Dane_Access2 := new DaneWspoldzielone2'(ASCII.ESC & "[30m" & "LP: ",False,0.0,0.1,False,False,False);
    S_LP2 : SterownikASR(Dane_LP2);
    Cz_LP2 : CzujnikASR(Dane_LP2);
    H_LP2 : Gaz(Dane_LP2);
 
-   Dane_PP2: Dane_Access2 := new DaneWspoldzielone2'(ASCII.ESC & "[31m" & "PP: ",False,0.0,0.1,False);
-   S_PP2 : SterownikASR(Dane_PP2);
-   Cz_PP2 : CzujnikASR(Dane_PP2);
-   H_PP2 : Gaz(Dane_PP2);
 
-   Dane_LT2: Dane_Access2 := new DaneWspoldzielone2'(ASCII.ESC & "[32m" & "LT: ",False,0.0,0.1,False);
-   S_LT2 : SterownikASR(Dane_LT2);
-   Cz_LT2 : CzujnikASR(Dane_LT2);
-   H_LT2 : Gaz(Dane_LT2);
 
-   Dane_PT2: Dane_Access2 := new DaneWspoldzielone2'(ASCII.ESC & "[34m" & "PT: ",False,0.0,0.1,False);
-   S_PT2 : SterownikASR(Dane_PT2);
-   Cz_PT2 : CzujnikASR(Dane_PT2);
-   H_PT2 : Gaz(Dane_PT2);
+
+
+
+
+   -- #############################
+   -- ########### GUI #############
+   package Button_Timeout is new Glib.Main.Generic_Sources (Gtk_Button);
+
+   Builder       : Gtkada_Builder;
+   Return_Code : Guint;
+   Error       : aliased Glib.Error.GError;
+   Start_Btn, Brake_On_Btn, Brake_Off_Btn, Accel_On_Btn, Accel_Off_Btn : Gtk_Button;
+   -- : Gtk_Text_Buffer;
+   Timeout : G_Source_Id;
+   Count   : Integer := 0;
+   Lock_Count_LP: Integer := 0;
+   Slide_Count_LP: Integer := 0;
+
+   type DataWindow is record
+      l1 : Gtk_Label;
+      l2 : Gtk_Label;
+      l3 : Gtk_Label;
+      l4 : Gtk_Label;
+   end record;
+
+   lpdata, ppdata, ltdata, ptdata : DataWindow;
+
+   -- zmiana danych w GUI
+   function Update_Gui (Button : Gtk_Button) return Boolean is
+   begin
+      Count := Count + 1;
+      Button.Set_Label(Count'Img);
+      if Dane_LP.CzyHamulecWcisniety = True then
+         -- wyswietlanie danych hamowania
+         lpdata.l1.Set_Label("v  =" & Dane_LP.PredkoscAuta'Img);
+         lpdata.l2.Set_Label("Fh =" & Dane_LP.SilaHamowania'Img);
+         lpdata.l3.Set_Label("hamulec: " & Dane_LP.CzyHamulecWcisniety'Img);
+         if Dane_LP.KoloZablokowaneFlaga = True then
+            Lock_Count_LP := Lock_Count_LP + 1;
+            lpdata.l4.Set_Label("kolo zablokowane ["&Lock_Count_LP'Img & "]");
+            Dane_LP.KoloZablokowaneFlaga := False;
+         else
+            lpdata.l4.Set_Label("");
+         end if;
+
+      end if;
+
+      if Dane_LP2.CzyGazWcisniety = True then
+         lpdata.l1.Set_Label("v  =" & Dane_LP2.PredkoscAuta'Img);
+         lpdata.l2.Set_Label("Fg =" & Dane_LP2.SilaGazu'Img);
+         lpdata.l3.Set_Label("gaz: " & Dane_LP2.CzyGazWcisniety'Img);
+         if Dane_LP2.PoslizgFlaga = True then
+            Slide_Count_LP := Slide_Count_LP + 1;
+            lpdata.l4.Set_Label("poslizg ["&Slide_Count_LP'Img & "]");
+            Dane_LP2.PoslizgFlaga := False;
+         else
+            lpdata.l4.Set_Label("");
+         end if;
+      end if;
+
+
+
+
+     -- CzyHamulecWcisniety : Boolean;
+
+     -- ABSwlaczony: Boolean;
+
+
+     -- Set_Text (Label, "count:" & Integer'Image (Count));
+     -- Put_Line(Count'Img);
+      return True;
+   end Update_Gui;
+
+   -- start timera ktory aktualizuje gui co 100ms
+   procedure Timeout_Start (Button : access Gtk_Button_Record'Class) is
+   begin
+      Put_Line("GUI started");
+      Start_Btn.Set_Sensitive(False);
+      Accel_On_Btn.Set_Sensitive(True);
+      Brake_On_Btn.Set_Sensitive(True);
+      Timeout := Button_Timeout.Timeout_Add(Interval => 50,Func => Update_Gui'Access, Data => Button);
+   end Timeout_Start;
+
+   -- wl. hamulca
+   procedure Brake_On (Button : access Gtk_Button_Record'Class) is
+   begin
+      Brake_On_Btn.Set_Sensitive(False);
+      Brake_Off_Btn.Set_Sensitive(True);
+      Accel_On_Btn.Set_Sensitive(False);
+      H_LP.Start;
+      Put_Line("hamulec wlaczony");
+
+   end Brake_On;
+
+   -- wyl. hamulca
+   procedure Brake_Off (Button : access Gtk_Button_Record'Class) is
+   begin
+      Brake_On_Btn.Set_Sensitive(True);
+      Brake_Off_Btn.Set_Sensitive(False);
+      Accel_On_Btn.Set_Sensitive(True);
+
+      Put_Line("hamulec wylaczony");
+   end Brake_Off;
+
+   -- wl. gazu
+   procedure Accel_On (Button : access Gtk_Button_Record'Class) is
+   begin
+      Accel_On_Btn.Set_Sensitive(False);
+      Brake_On_Btn.Set_Sensitive(False);
+      Accel_Off_Btn.Set_Sensitive(True);
+      H_LP2.Start;
+      Put_Line("gaz wlaczony");
+   end Accel_On;
+
+   -- wyl. gazu
+   procedure Accel_Off (Button : access Gtk_Button_Record'Class) is
+   begin
+      Accel_On_Btn.Set_Sensitive(True);
+      Brake_On_Btn.Set_Sensitive(True);
+      Accel_Off_Btn.Set_Sensitive(False);
+      Put_Line("gaz wylaczony");
+   end Accel_Off;
+
 
 begin
 
@@ -457,28 +512,28 @@ begin
              );
 
    -- obiekty z gui dot. prawego przedniego kola
-   ppdata := (
-              Gtk_Label (Builder.Get_Object("pp_1")),
-              Gtk_Label (Builder.Get_Object("pp_2")),
-              Gtk_Label (Builder.Get_Object("pp_3")),
-              Gtk_Label (Builder.Get_Object("pp_4"))
-             );
+   --ppdata := (
+   --           Gtk_Label (Builder.Get_Object("pp_1")),
+   --           Gtk_Label (Builder.Get_Object("pp_2")),
+   --           Gtk_Label (Builder.Get_Object("pp_3")),
+   --           Gtk_Label (Builder.Get_Object("pp_4"))
+   --          );
 
    --obiekty z gui dot. prawego tylnego kola
-   ptdata := (
-              Gtk_Label (Builder.Get_Object("pt_1")),
-              Gtk_Label (Builder.Get_Object("pt_2")),
-              Gtk_Label (Builder.Get_Object("pt_3")),
-              Gtk_Label (Builder.Get_Object("pt_4"))
-             );
+   --ptdata := (
+   --           Gtk_Label (Builder.Get_Object("pt_1")),
+   --           Gtk_Label (Builder.Get_Object("pt_2")),
+   --          Gtk_Label (Builder.Get_Object("pt_3")),
+   --           Gtk_Label (Builder.Get_Object("pt_4"))
+   --          );
 
    -- obiekty z gui dot. lewego tylnego kola
-   ltdata := (
-              Gtk_Label (Builder.Get_Object("lt_1")),
-              Gtk_Label (Builder.Get_Object("lt_2")),
-              Gtk_Label (Builder.Get_Object("lt_3")),
-              Gtk_Label (Builder.Get_Object("lt_4"))
-             );
+   --ltdata := (
+   --           Gtk_Label (Builder.Get_Object("lt_1")),
+   --           Gtk_Label (Builder.Get_Object("lt_2")),
+   --          Gtk_Label (Builder.Get_Object("lt_3")),
+   --           Gtk_Label (Builder.Get_Object("lt_4"))
+   --          );
 
 
    -- handler dla przycisku start
@@ -501,8 +556,8 @@ begin
    Accel_Off_Btn := Gtk_Button (Builder.Get_Object ("accelOff"));
    Accel_Off_Btn.On_Clicked(Accel_Off'Unrestricted_Access);
 
-   Console_Buffer := Gtk_Text_Buffer (Builder.Get_Object ("console_buffer"));
-   Console_Buffer.Set_Text("Konsola");
+   --Console_Buffer := Gtk_Text_Buffer (Builder.Get_Object ("console_buffer"));
+  -- Console_Buffer.Set_Text("Konsola");
 
 
    Gtk.Widget.Show_All (
@@ -510,7 +565,7 @@ begin
 
 
    -- rozpoczynanie glownej petli GTK
- --  Gtk.Main.Main;
+   Gtk.Main.Main;
 
 
 

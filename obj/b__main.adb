@@ -45,11 +45,11 @@ package body ada_main is
    E413 : Short_Integer; pragma Import (Ada, E413, "system__assertions_E");
    E178 : Short_Integer; pragma Import (Ada, E178, "system__pool_global_E");
    E120 : Short_Integer; pragma Import (Ada, E120, "system__random_seed_E");
-   E456 : Short_Integer; pragma Import (Ada, E456, "system__tasking__initialization_E");
-   E464 : Short_Integer; pragma Import (Ada, E464, "system__tasking__protected_objects_E");
-   E466 : Short_Integer; pragma Import (Ada, E466, "system__tasking__protected_objects__entries_E");
-   E470 : Short_Integer; pragma Import (Ada, E470, "system__tasking__queuing_E");
-   E476 : Short_Integer; pragma Import (Ada, E476, "system__tasking__stages_E");
+   E461 : Short_Integer; pragma Import (Ada, E461, "system__tasking__initialization_E");
+   E469 : Short_Integer; pragma Import (Ada, E469, "system__tasking__protected_objects_E");
+   E471 : Short_Integer; pragma Import (Ada, E471, "system__tasking__protected_objects__entries_E");
+   E475 : Short_Integer; pragma Import (Ada, E475, "system__tasking__queuing_E");
+   E481 : Short_Integer; pragma Import (Ada, E481, "system__tasking__stages_E");
    E170 : Short_Integer; pragma Import (Ada, E170, "glib_E");
    E201 : Short_Integer; pragma Import (Ada, E201, "gtkada__types_E");
    E266 : Short_Integer; pragma Import (Ada, E266, "gdk__frame_timings_E");
@@ -673,7 +673,7 @@ package body ada_main is
       begin
          F72;
       end;
-      E466 := E466 - 1;
+      E471 := E471 - 1;
       declare
          procedure F73;
          pragma Import (Ada, F73, "system__tasking__protected_objects__entries__finalize_spec");
@@ -929,15 +929,15 @@ package body ada_main is
       System.Random_Seed'Elab_Body;
       E120 := E120 + 1;
       System.Tasking.Initialization'Elab_Body;
-      E456 := E456 + 1;
+      E461 := E461 + 1;
       System.Tasking.Protected_Objects'Elab_Body;
-      E464 := E464 + 1;
+      E469 := E469 + 1;
       System.Tasking.Protected_Objects.Entries'Elab_Spec;
-      E466 := E466 + 1;
+      E471 := E471 + 1;
       System.Tasking.Queuing'Elab_Body;
-      E470 := E470 + 1;
+      E475 := E475 + 1;
       System.Tasking.Stages'Elab_Body;
-      E476 := E476 + 1;
+      E481 := E481 + 1;
       Glib'Elab_Spec;
       E170 := E170 + 1;
       Gtkada.Types'Elab_Spec;
