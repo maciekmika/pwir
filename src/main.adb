@@ -85,6 +85,17 @@ procedure Main is
       return WspolczynnikOryginalny+ZmianaPodloza;
    end LosoweZmianyPodloza;
 
+   function LosoweZmianySily(Sila: in Float) return Float is
+      RandomFloat: Float;
+      ZmianaSily: Float;
+   begin
+      RandomFloat := Ada.Numerics.Float_Random.Random(Gen);
+      RandomFloat := RandomFloat - 0.5;
+      ZmianaSily := RandomFloat*10.0;
+      --Put_Line("Zmiana podloza" & ZmianaPodloza'Img);
+      return Sila+ZmianaSily;
+   end LosoweZmianySily;
+
    -- zmniejsza/zwieksza sile hamowania
    -- na podstawie sygnalow z czujnika
    -- wejsciem info czy kola zablokowane
@@ -197,7 +208,7 @@ procedure Main is
             AktualnyWspolczynnik := Dane.SilaGazu/(PrzyspieszenieZiemskie*MasaAuta);
             -- if aktualny_wsp>podloze_wsp => kola zablokowane
             if AktualnyWspolczynnik>LosoweZmianyPodloza(WspoczynnikPodloza) then
-               Put_Line(Dane.Prefix & "kolo zablokowane");
+               Put_Line(Dane.Prefix & "poslizg, aktywacja ASR");
                Dane.ASRwlaczony := True;
             end if;
             -- wlacz asr
@@ -211,6 +222,7 @@ procedure Main is
 
    task body SterownikABS is
       AktualnyWspolczynnik : Float := 0.8;
+      KoloZablokowane: Boolean := False;
    begin
 
       Put_Line(Dane.Prefix & "sterownik zainicjalizowany");
@@ -224,12 +236,29 @@ procedure Main is
       --dopoki predkosc nie jest zero
       while Dane.PredkoscAuta > 0.0 loop
          -- dobieramy odpowiednia sile
-         Dane.SilaHamowania := Dane.SilaHamowania+200.0;
+         Dane.SilaHamowania := Dane.SilaHamowania+LosoweZmianySily(500.0);
+         AktualnyWspolczynnik := Dane.SilaHamowania/(PrzyspieszenieZiemskie*MasaAuta);
+
          while AktualnyWspolczynnik>WspoczynnikPodloza loop
-            Dane.SilaHamowania := Dane.SilaHamowania-100.0;
+            if KoloZablokowane = False then
+               Put_Line(Dane.Prefix & "kolo zablokowane, zmniejszanie sily hamowania, aktualna sila hamowania:" & Dane.SilaHamowania'Img);
+            end if;
+            KoloZablokowane := True;
+
+            Dane.SilaHamowania := Dane.SilaHamowania-LosoweZmianySily(200.0);
             AktualnyWspolczynnik := Dane.SilaHamowania/(PrzyspieszenieZiemskie*MasaAuta);
             --Put_Line("in");
          end loop;
+
+          ObliczaniePredkosci(Dane.Prefix, Dane.PredkoscAuta, Dane.SilaHamowania);
+
+         if AktualnyWspolczynnik<=WspoczynnikPodloza then
+            if KoloZablokowane = True then
+               Put_Line(Dane.Prefix & "kolo odblokowane, aktualna sila hamowania:" & Dane.SilaHamowania'Img);
+            end if;
+
+            KoloZablokowane := False;
+         end if;
 
          ObliczaniePredkosci(Dane.Prefix, Dane.PredkoscAuta, Dane.SilaHamowania);
          delay 0.1;
@@ -241,6 +270,7 @@ procedure Main is
 
    task body SterownikASR is
       AktualnyWspolczynnik : Float := 0.8;
+      KoloZablokowane: Boolean := False;
    begin
 
       Put_Line(Dane.Prefix & "sterownik ASR zainicjalizowany");
@@ -254,12 +284,29 @@ procedure Main is
       --dopoki predkosc nie jest zero
       while Dane.PredkoscAuta < 25.0 loop
          -- dobieramy odpowiednia sile
-         Dane.SilaGazu := Dane.SilaGazu+200.0;
+         Dane.SilaGazu := Dane.SilaGazu+LosoweZmianySily(100.0);
+         AktualnyWspolczynnik := Dane.SilaGazu/(PrzyspieszenieZiemskie*MasaAuta);
          while AktualnyWspolczynnik>WspoczynnikPodloza loop
-            Dane.SilaGazu := Dane.SilaGazu-100.0;
+            if KoloZablokowane = False then
+               Put_Line(Dane.Prefix & "poslizg, zmniejszanie gazu, aktualna sila gazu:" & Dane.SilaGazu'Img);
+            end if;
+            KoloZablokowane := True;
+
+
+            Dane.SilaGazu := Dane.SilaGazu-LosoweZmianySily(400.0);
             AktualnyWspolczynnik := Dane.SilaGazu/(PrzyspieszenieZiemskie*MasaAuta);
             --Put_Line("in");
          end loop;
+
+         ObliczaniePredkosciGaz(Dane.Prefix, Dane.PredkoscAuta, Dane.SilaGazu);
+
+         if AktualnyWspolczynnik<=WspoczynnikPodloza then
+            if KoloZablokowane = True then
+               Put_Line(Dane.Prefix & "koniec poslizgu, aktualna sila gazu:" & Dane.SilaGazu'Img);
+            end if;
+
+            KoloZablokowane := False;
+         end if;
 
          ObliczaniePredkosciGaz(Dane.Prefix, Dane.PredkoscAuta, Dane.SilaGazu);
          delay 0.1;
@@ -314,15 +361,18 @@ procedure Main is
 begin
    Put_Line("START#############################");
    delay 3.0;
-   --H_LP.Start;
+   --Hamulce poszczegolnych kol
+   H_LP.Start;
    --H_PP.Start;
    --H_LT--.Start;
    --H_PT.Start;
 
-   H_LP2.Start;
-   H_PP2.Start;
-   H_LT2.Start;
-   H_PT2.Start;
+   --Gaz dla poszczegolnych kol
+   -- H_LP2.Start;
+   --  H_PP2.Start;
+   -- H_LT2.Start;
+   --  H_PT2.Start;
+
    --powrót do czarnego koloru terminala
    Put_Line(ASCII.ESC & "[30m");
 end Main;
