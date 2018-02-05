@@ -3,15 +3,18 @@ use Ada.Text_IO;
 with Ada.Calendar;  use Ada.Calendar;
 with Ada.Numerics.Elementary_Functions;
 with ada.numerics.float_random;
+with Ada.Float_Text_IO;
 
 
 procedure Main is
 
    Gen : ada.numerics.float_random.Generator;
 
-   MasaAuta : Float := 900.0;
+   --podzielona przez 4, dla kazdego kola po 250
+   MasaAuta : Float := 250.0;
    PrzyspieszenieZiemskie : Float := 10.0;
    WspoczynnikPodloza : Float := 0.7 with Atomic;
+   PromienKola : Float := 0.25;
 
    type DaneWspoldzielone is record
       Prefix: String(1 .. 9);
@@ -37,6 +40,8 @@ procedure Main is
       DrogaPrzebyta : Float;
       PredkoscInteger : Integer;
       Zmienna : Float;
+      PredkoscObrotowa : Float;
+      PredkoscObrotowaInt : Integer;
    begin
       EnergiaPoczatkowa := 0.5*MasaAuta*PredkoscAuta*PredkoscAuta;
       -- obliczamy droge przebyta przez 1/10 sekundy sekunde
@@ -50,8 +55,15 @@ procedure Main is
          PredkoscAuta := 0.0;
       end if;
 
-      PredkoscInteger := Integer(PredkoscAuta);
-      Put_Line(Prefix & PredkoscInteger'Img);
+
+      PredkoscInteger := Integer(PredkoscAuta); --konwersja na int dla ladnego wyswietlania
+
+      -- predkosc obrotowa
+      PredkoscObrotowa := PredkoscAuta / PromienKola;
+      PredkoscObrotowaInt := Integer(PredkoscObrotowa);
+
+      Put_Line("v = " & Prefix & PredkoscInteger'Img & " m/s [w = " & PredkoscObrotowaInt'Img & " rad/s]");
+
    end ObliczaniePredkosci;
 
 
@@ -60,6 +72,8 @@ procedure Main is
       DrogaPrzebyta : Float;
       PredkoscInteger : Integer;
       Zmienna : Float;
+      PredkoscObrotowa : Float;
+      PredkoscObrotowaInt : Integer;
    begin
       EnergiaPoczatkowa := 0.5*MasaAuta*PredkoscAuta*PredkoscAuta;
       -- obliczamy droge przebyta przez 1/10 sekundy sekunde
@@ -70,8 +84,13 @@ procedure Main is
       PredkoscAuta := Ada.Numerics.Elementary_Functions.Sqrt(2.0*(Zmienna)/MasaAuta); -- to powinno byc w pierwiastku
 
 
-      PredkoscInteger := Integer(PredkoscAuta);
-      Put_Line(Prefix & PredkoscInteger'Img);
+      PredkoscInteger := Integer(PredkoscAuta); --konwersja na int dla ladnego wyswietlania
+
+      -- predkosc obrotowa
+      PredkoscObrotowa := PredkoscAuta / PromienKola;
+      PredkoscObrotowaInt := Integer(PredkoscObrotowa);
+
+      Put_Line("v = " & Prefix & PredkoscInteger'Img & " m/s [w = " & PredkoscObrotowaInt'Img & " rad/s]");
    end ObliczaniePredkosciGaz;
 
    function LosoweZmianyPodloza(WspolczynnikOryginalny: in Float) return Float is
@@ -241,7 +260,7 @@ procedure Main is
 
          while AktualnyWspolczynnik>WspoczynnikPodloza loop
             if KoloZablokowane = False then
-               Put_Line(Dane.Prefix & "kolo zablokowane, zmniejszanie sily hamowania, aktualna sila hamowania:" & Dane.SilaHamowania'Img);
+               Put_Line(Dane.Prefix & "kolo zablokowane, zmniejszanie sily hamowania, aktualna sila hamowania:" & Dane.SilaHamowania'Img & " N");
             end if;
             KoloZablokowane := True;
 
@@ -254,7 +273,7 @@ procedure Main is
 
          if AktualnyWspolczynnik<=WspoczynnikPodloza then
             if KoloZablokowane = True then
-               Put_Line(Dane.Prefix & "kolo odblokowane, aktualna sila hamowania:" & Dane.SilaHamowania'Img);
+               Put_Line(Dane.Prefix & "kolo odblokowane, aktualna sila hamowania:" & Dane.SilaHamowania'Img & " N");
             end if;
 
             KoloZablokowane := False;
@@ -288,7 +307,7 @@ procedure Main is
          AktualnyWspolczynnik := Dane.SilaGazu/(PrzyspieszenieZiemskie*MasaAuta);
          while AktualnyWspolczynnik>WspoczynnikPodloza loop
             if KoloZablokowane = False then
-               Put_Line(Dane.Prefix & "poslizg, zmniejszanie gazu, aktualna sila gazu:" & Dane.SilaGazu'Img);
+               Put_Line(Dane.Prefix & "poslizg, zmniejszanie gazu, aktualna sila gazu:" & Dane.SilaGazu'Img & " N");
             end if;
             KoloZablokowane := True;
 
@@ -302,7 +321,7 @@ procedure Main is
 
          if AktualnyWspolczynnik<=WspoczynnikPodloza then
             if KoloZablokowane = True then
-               Put_Line(Dane.Prefix & "koniec poslizgu, aktualna sila gazu:" & Dane.SilaGazu'Img);
+               Put_Line(Dane.Prefix & "koniec poslizgu, aktualna sila gazu:" & Dane.SilaGazu'Img & " N");
             end if;
 
             KoloZablokowane := False;
@@ -314,6 +333,8 @@ procedure Main is
       end loop;
          Put_Line(Dane.Prefix &  "ASR dezaktywowany");
    end SterownikASR;
+
+
 
 
    --LP - lewy przód PP - prawy przód LT PT
@@ -358,21 +379,62 @@ procedure Main is
    Cz_PT2 : CzujnikASR(Dane_PT2);
    H_PT2 : Gaz(Dane_PT2);
 
+   procedure Hamowanie is
+   begin
+      --Hamulce poszczegolnych kol
+      H_LP.Start;
+      H_PP.Start;
+      H_LT.Start;
+      H_PT.Start;
+   end Hamowanie;
+
+   procedure Przyspieszanie is
+   begin
+      --Gaz dla poszczegolnych kol
+      H_LP2.Start;
+      H_PP2.Start;
+      H_LT2.Start;
+      H_PT2.Start;
+   end Przyspieszanie;
+
+
+
+   Wspolczynnik : String (1..50);
+   Len : Natural;
+   FWspolczynnik: Float;
+   Operacja : String (1..50);
+
 begin
-   Put_Line("START#############################");
-   delay 3.0;
-   --Hamulce poszczegolnych kol
-   H_LP.Start;
-   H_PP.Start;
-   H_LT.Start;
-   H_PT.Start;
+   Put_Line("START");
+   Put_Line("Wybierz wspolczynnik tarcia podloza");
+   Put_Line("0.7-0.8 - suchy asfalt,");
+   Put_Line("0.4-0.5 - mokry asfalt,");
+   Put_Line("0.1-0.4 - droga zasniezony,");
+   Put_Line("0.05-0.15 - droga oblodzona");
 
-   --Gaz dla poszczegolnych kol
-   -- H_LP2.Start;
-   --  H_PP2.Start;
-   -- H_LT2.Start;
-   --  H_PT2.Start;
+   Get_Line(Wspolczynnik, Len);
+   FWspolczynnik := Float'Value(Wspolczynnik(1 .. Len));
+   WspoczynnikPodloza := FWspolczynnik;
 
+   Put_Line(FWspolczynnik'Img);
+   Put_Line("Wybierz operacja [h - hamowanie, p - przyspieszanie]");
+   Get_Line(Operacja,Len);
+
+   if Operacja(1..Len) = "h" then
+      delay 2.0;
+      Hamowanie;
+
+   else if Operacja(1..Len) = "p" then
+         delay 2.0;
+         Przyspieszanie;
+      else
+         Put_Line("Niepoprawna operacja");
+      end if;
+   end if;
+
+
+
+   delay 2.0;
    --powrót do czarnego koloru terminala
    Put_Line(ASCII.ESC & "[30m");
 end Main;
