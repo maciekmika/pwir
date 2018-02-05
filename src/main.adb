@@ -15,18 +15,18 @@ procedure Main is
 
    type DaneWspoldzielone is record
       Prefix: String(1 .. 9);
-      CzyHamulecWcisniety : Boolean;
-      SilaHamowania : Float;
-      PredkoscAuta : Float;
-      ABSwlaczony: Boolean;
+      CzyHamulecWcisniety : Boolean with Atomic;
+      SilaHamowania : Float with Atomic;
+      PredkoscAuta : Float with Atomic;
+      ABSwlaczony: Boolean with Atomic;
    end record;
 
    type DaneWspoldzielone2 is record
       Prefix: String(1 .. 9);
-      CzyGazWcisniety : Boolean;
-      SilaGazu : Float;
-      PredkoscAuta : Float;
-      ASRwlaczony: Boolean;
+      CzyGazWcisniety : Boolean with Atomic;
+      SilaGazu : Float with Atomic;
+      PredkoscAuta : Float with Atomic;
+      ASRwlaczony: Boolean with Atomic;
    end record;
 
    type Dane_Access is access DaneWspoldzielone;
@@ -317,22 +317,22 @@ procedure Main is
 
 
    --LP - lewy przód PP - prawy przód LT PT
-   Dane_LP: Dane_Access := new DaneWspoldzielone'(ASCII.ESC & "[30m" & "LP: ",False,0.0,15.0,False);
+   Dane_LP: Dane_Access := new DaneWspoldzielone'(ASCII.ESC & "[30m" & "LP: ",False,0.0,50.0,False);
    S_LP : SterownikABS(Dane_LP);
    Cz_LP : Czujnik(Dane_LP);
    H_LP : Hamulec(Dane_LP);
 
-   Dane_PP: Dane_Access := new DaneWspoldzielone'(ASCII.ESC & "[31m" & "PP: ",False,0.0,25.0,False);
+   Dane_PP: Dane_Access := new DaneWspoldzielone'(ASCII.ESC & "[31m" & "PP: ",False,0.0,50.0,False);
    S_PP : SterownikABS(Dane_PP);
    Cz_PP : Czujnik(Dane_PP);
    H_PP : Hamulec(Dane_PP);
 
-   Dane_LT: Dane_Access := new DaneWspoldzielone'(ASCII.ESC & "[32m" & "LT: ",False,0.0,35.0,False);
+   Dane_LT: Dane_Access := new DaneWspoldzielone'(ASCII.ESC & "[32m" & "LT: ",False,0.0,50.0,False);
    S_LT : SterownikABS(Dane_LT);
    Cz_LT : Czujnik(Dane_LT);
    H_LT : Hamulec(Dane_LT);
 
-   Dane_PT: Dane_Access := new DaneWspoldzielone'(ASCII.ESC & "[34m" & "PT: ",False,0.0,45.0,False);
+   Dane_PT: Dane_Access := new DaneWspoldzielone'(ASCII.ESC & "[34m" & "PT: ",False,0.0,50.0,False);
    S_PT : SterownikABS(Dane_PT);
    Cz_PT : Czujnik(Dane_PT);
    H_PT : Hamulec(Dane_PT);
@@ -363,9 +363,9 @@ begin
    delay 3.0;
    --Hamulce poszczegolnych kol
    H_LP.Start;
-   --H_PP.Start;
-   --H_LT--.Start;
-   --H_PT.Start;
+   H_PP.Start;
+   H_LT.Start;
+   H_PT.Start;
 
    --Gaz dla poszczegolnych kol
    -- H_LP2.Start;

@@ -30,7 +30,7 @@ RV SPARK_05
 RV MAX_TASK_ENTRIES=1
 RV MAX_TASKS=1+
 
-U main%b		main.adb		2df0b763 NE OO SU
+U main%b		main.adb		5b99e511 NE OO SU
 W ada%s			ada.ads			ada.ali
 W ada.calendar%s	a-calend.adb		a-calend.ali
 W ada.calendar.delays%s	a-caldel.adb		a-caldel.ali
@@ -71,7 +71,7 @@ D interfac.ads		20170516105950 5ab55268 interfaces%s
 D i-c.ads		20170516105948 5421119b interfaces.c%s
 D i-cstrin.ads		20170516105952 341d0ddf interfaces.c.strings%s
 D i-cstrea.ads		20170516105950 e53d8b8e interfaces.c_streams%s
-D main.adb		20180205102654 7b7cd505 main%b
+D main.adb		20180205121914 0d158777 main%b
 D system.ads		20170516105954 32a08138 system%s
 D s-atacco.ads		20170516105954 4c36d12f system.address_to_access_conversions%s
 D s-conca2.ads		20170516105952 02a0d7d0 system.concat_2%s
@@ -197,7 +197,7 @@ X 20 main.adb
 . 338r11
 125p22 Dane{32P9} 136r19 137r10 138r10 140r16 140r44 141r22 143r33 143r46
 . 143r65
-126Y13 Start 135b14 146l11 146t16 365s9
+126Y13 Start 135b14 146l11 146t16 365s9 366s9 367s9 368s9
 129T14 Gaz 129d18 131l8 131e11 149b14 163l8 163t11 344r12 349r12 354r12 359r12
 129p18 Dane{33P9} 152r19 153r10 154r10 156r16 156r45 157r22 159r36 159r49
 . 159r68
@@ -215,15 +215,15 @@ X 20 main.adb
 325p4 Dane_PP{32P9} 326r24 327r20 328r19
 326t4 S_PP{102T14}
 327t4 Cz_PP{114T14}
-328t4 H_PP{125T14}
+328t4 H_PP{125T14} 366r4
 330p4 Dane_LT{32P9} 331r24 332r20 333r19
 331t4 S_LT{102T14}
 332t4 Cz_LT{114T14}
-333t4 H_LT{125T14}
+333t4 H_LT{125T14} 367r4
 335p4 Dane_PT{32P9} 336r24 337r20 338r19
 336t4 S_PT{102T14}
 337t4 Cz_PT{114T14}
-338t4 H_PT{125T14}
+338t4 H_PT{125T14} 368r4
 341p4 Dane_LP2{33P9} 342r25 343r24 344r16
 342t4 S_LP2{105T14}
 343t4 Cz_LP2{117T14}
