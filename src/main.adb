@@ -62,7 +62,7 @@ procedure Main is
       PredkoscObrotowa := PredkoscAuta / PromienKola;
       PredkoscObrotowaInt := Integer(PredkoscObrotowa);
 
-      Put_Line("v = " & Prefix & PredkoscInteger'Img & " m/s [w = " & PredkoscObrotowaInt'Img & " rad/s]");
+      Put_Line(Prefix & "v = " &  PredkoscInteger'Img & " m/s [w = " & PredkoscObrotowaInt'Img & " rad/s]");
 
    end ObliczaniePredkosci;
 
@@ -90,7 +90,7 @@ procedure Main is
       PredkoscObrotowa := PredkoscAuta / PromienKola;
       PredkoscObrotowaInt := Integer(PredkoscObrotowa);
 
-      Put_Line("v = " & Prefix & PredkoscInteger'Img & " m/s [w = " & PredkoscObrotowaInt'Img & " rad/s]");
+      Put_Line(Prefix & "v = " & PredkoscInteger'Img & " m/s [w = " & PredkoscObrotowaInt'Img & " rad/s]");
    end ObliczaniePredkosciGaz;
 
    function LosoweZmianyPodloza(WspolczynnikOryginalny: in Float) return Float is
@@ -416,8 +416,17 @@ begin
    FWspolczynnik := Float'Value(Wspolczynnik(1 .. Len));
    WspoczynnikPodloza := FWspolczynnik;
 
+   Put_Line("Podaj predkosc poczatkowa [m/s]");
+   Get_Line(Wspolczynnik, Len);
+   FWspolczynnik := Float'Value(Wspolczynnik(1 .. Len));
+   Dane_LP.PredkoscAuta := FWspolczynnik;
+   Dane_PP.PredkoscAuta := FWspolczynnik;
+   Dane_LT.PredkoscAuta := FWspolczynnik;
+   Dane_PT.PredkoscAuta := FWspolczynnik;
+
+
    Put_Line(FWspolczynnik'Img);
-   Put_Line("Wybierz operacja [h - hamowanie, p - przyspieszanie]");
+   Put_Line("Wybierz operacje [h - hamowanie, p - przyspieszanie]");
    Get_Line(Operacja,Len);
 
    if Operacja(1..Len) = "h" then
